@@ -1,7 +1,5 @@
-package cryptoAlgo;
+package com.C722.CriptoAlgo.criptoAlgo.models.entity;
 
-import com.sun.xml.bind.v2.TODO;
-import cryptoAlgo.models.RoleEntity;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -53,12 +51,12 @@ public class UserEntity {
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "wallets",
+    @JoinTable(name = "wallets_users",
             joinColumns =
-                    { @JoinColumn(name = "users_id", referencedColumnName = "id") },
+                    { @JoinColumn(name = "user_id", referencedColumnName = "id") },
             inverseJoinColumns =
                     { @JoinColumn(name = "wallets_id", referencedColumnName = "id") })
-    private Long walletId;
+    private WalletEntity wallet;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "user_role",

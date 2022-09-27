@@ -1,4 +1,4 @@
-package cryptoAlgo.models.entity;
+package com.C722.CriptoAlgo.criptoAlgo.models.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +23,7 @@ public class WalletEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name= "ownerID")
+    @Column(name= "owner_id")
     private Long ownerid;
 
     @Column(name= "usd_balance")// revisar si el tipo de dato es correcto con pruebas
