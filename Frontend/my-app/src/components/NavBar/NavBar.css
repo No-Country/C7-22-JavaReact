@@ -1,0 +1,62 @@
+.navStyle{
+    display: flex;
+    border-bottom: 1px solid #d7d8d8;
+}
+
+.imgLogo{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    margin-right:20px ;
+    margin-left: 10px;
+}
+
+.ulNavStyle{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    font-size: 22px;
+    margin-left: 12%;  
+}
+
+.liLinkNav{
+    display: flex;
+    justify-content: right;
+    margin-right: 30px;
+    text-decoration: none;
+    color: #191919;
+}
+
+.liLinkNav:hover{
+    border-bottom: 1px solid #d7d8d8;
+    color: #191919;
+}
+
+.divRight{
+   display: flex;
+   justify-content: flex-end;
+   margin-left: 30%;
+   align-items: center;
+}
+
+.buttonStyle{
+
+    background: #d7d8d8;
+    margin-right: 30px;
+    width: 12rem;
+    border-radius: 35px;
+    margin: 20px;
+    height: 3rem;
+    border: none;
+    color: #191919;
+    pointer-events: pointer;
+    font-size: 20px;
+    letter-spacing: 0.08em;
+}
+
+
+
+
+

@@ -1,0 +1,15 @@
+.divAyudaCentro{
+    
+    
+    margin-top: 5%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+.tituloCentro{
+    display: flex;
+    justify-content: center;
+    padding-top: 8%;
+}
+
+
