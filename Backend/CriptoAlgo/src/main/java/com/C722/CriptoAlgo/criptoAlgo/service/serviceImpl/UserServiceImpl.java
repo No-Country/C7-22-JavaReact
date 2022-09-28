@@ -4,6 +4,7 @@ import com.C722.CriptoAlgo.criptoAlgo.Exceptions.UserAlreadyExistException;
 import com.C722.CriptoAlgo.criptoAlgo.auth.RoleEnum;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.RoleEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
+import com.C722.CriptoAlgo.criptoAlgo.models.mapper.UserMapper;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserRegisterRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserUpdateRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
@@ -24,8 +25,8 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserResponse register(UserRegisterRequest user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()){
+    public UserResponse register(UserRegisterRequest userRequest) {
+        if (userRepository.findByEmail(userRequest.getEmail()).isPresent()){
             throw new UserAlreadyExistException();
         }
 
@@ -36,8 +37,8 @@ public class UserServiceImpl implements UserService {
             role = roleRepository.save(role);
         }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-       //UserEntity entity = userMapper.toUserEntity(userRequest)
+        userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+       UserEntity entity = UserMapper.INSTANCE.registerRequestToEntity(userRequest);
         userRepository.save(entity);
         String token =
 
