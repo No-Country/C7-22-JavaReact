@@ -1,4 +1,6 @@
 import './RegisterHome.css'
+import { Link } from 'react-router-dom';
+
 export const RegisterHome = () => {
     return (
         <div class="container-fluid">
@@ -13,7 +15,7 @@ export const RegisterHome = () => {
                             Crea tu cuenta
                             </h2>
                             <p>
-                            Regístrate desde el sitio web.
+                            <Link to="/">Regístrate</Link> desde el sitio web.
                             </p>
                             
                         </div>
