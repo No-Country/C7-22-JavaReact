@@ -1,13 +1,10 @@
 import React from "react";
-import NavBar from "../NavBar/NavBar";
 import '../Ayuda/Ayuda.css'
 export default function Ayuda() {
   return (
     <>
-      <div>
-        <NavBar />
-      </div>
-      <div className="">
+     
+      <div className="helpContainer">
         <h2 className="tituloCentro">¿Con qué podemos ayudarte? </h2>
         <div className="accordion divAyudaCentro" id="accordionExample">
           <div className="accordion-item">

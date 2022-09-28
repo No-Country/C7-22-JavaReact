@@ -1,6 +1,6 @@
 .contentFooter{
-    border-top:4px solid;
-    border-bottom: 4px solid;
+    border-top:1px solid #D7D8D8;
+    border-bottom: 1px solid #D7D8D8;
     padding-top:60px;
     padding-bottom: 60px;
 }
@@ -17,10 +17,11 @@
 
 .listFooter{
     display: flex;
+    padding-left: 50px;
 }
 
 .list {
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
 }
 
@@ -61,7 +62,7 @@
 }
 
 .copyright{
-    font-size: 26.6px;
+    font-size: 22px;
     text-align: center;
 }
 

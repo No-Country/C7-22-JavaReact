@@ -1,7 +1,6 @@
 import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-import Ayuda from "../Ayuda/Ayuda.jsx";
 export default function NavBar() {
   return (
     <header>
