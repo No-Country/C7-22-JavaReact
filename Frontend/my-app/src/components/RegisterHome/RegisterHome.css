@@ -1,0 +1,25 @@
+.registerContainer{
+    padding:150px 0px;
+}
+
+.firstContent{
+        display: flex;
+        justify-content: center;
+}
+
+.firstContent p{
+    font-size: 30.5px;
+    font-weight: 700;
+    line-height: 55px;
+}
+
+.secondContent h2{
+    text-transform: uppercase;
+    font-size: 28px;
+    font-weight: 700;
+
+}
+
+.secondContent p{
+    font-size: 28px;
+}

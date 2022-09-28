@@ -1,0 +1,53 @@
+
+
+.firstSection{
+    background: url(../../../public/assets/primera-seccion-fondo.jpg);
+    background-size: cover;
+    background-position: center;
+    height:430px;
+    width: 100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content: center;
+    flex-direction:column;
+}
+
+.titleFirstSection{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left:200px;
+    top:20px;
+}
+
+.titleFirstSection p {
+    font-size: 27px;
+    color: #191919;
+    padding-bottom:10px;
+}
+
+.titleFirstSection button {
+    font-size: 15px;
+    width:208px;
+    height: 47px;
+    align-self: center;
+}
+
+.infoHome h3 {
+    font-size: 30px;
+}
+
+.infoHome p {
+    font-size: 21px;
+}
+
+.sentimentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sentimentContainer img {
+    width:600px;
+    height:320px;
+}
