@@ -1,6 +1,6 @@
 import './Home.css'
 import { MainCriptos } from '../MainCriptos/MainCriptos';
-import { RegisterHome } from '../RegisterHome/RegisterHome';
+import { RegisterHome } from './RegisterHome/RegisterHome';
 export const Home = () => {
     return (
         <div>
