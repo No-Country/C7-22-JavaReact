@@ -17,7 +17,7 @@ export default function NavBar() {
             <Link to="/" className="liLinkNav">
               <li className="">HOME</li>
             </Link>
-            <Link to="/" className="liLinkNav">
+            <Link to="/precios" className="liLinkNav">
               <li className="">PRECIOS</li>
             </Link>
             <Link to="/ayuda" className="liLinkNav">

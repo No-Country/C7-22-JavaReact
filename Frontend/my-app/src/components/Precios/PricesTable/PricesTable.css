@@ -1,0 +1,49 @@
+.pricesTableContainer {
+    padding:60px 100px;
+}
+
+.firstContentTable{
+    display: flex;
+    justify-content: space-between;
+}
+
+.criptoCards{
+    width: 50px;
+    height: 50px;
+}
+
+.buttonsTable{
+    order:0;
+}
+
+.searchBar{
+    order:1;
+}
+
+@media all and (max-width:900px){
+    .pricesTableContainer{
+        padding-left:25px;
+        padding-right:25px;
+    }
+
+    .firstContentTable{
+        flex-direction:column;
+    }
+    .responsiveTablePrices{
+
+        display:none;
+     }
+
+     .buttonsTable{
+        order:1;
+        padding-top:10px;
+        padding-bottom: 10px;
+    }
+    
+    .searchBar{
+        order:0;
+    }
+
+    
+    
+}
