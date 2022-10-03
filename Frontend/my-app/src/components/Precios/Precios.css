@@ -1,0 +1,18 @@
+.pricesTitle {
+    padding:30px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.pricesTitle p{
+   text-align: center;
+   font-size: 28px;
+   font-weight: 700;
+}
+
+@media all and (max-width:770px){
+    .pricesTitle p{
+
+        font-size: 20px;
+     }
+}
