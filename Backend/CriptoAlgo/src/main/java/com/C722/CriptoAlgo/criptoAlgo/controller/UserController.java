@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -21,19 +22,22 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @PostMapping("/register")
-    public ResponseEntity<UserResponse> register(@Valid @RequestBody UserRegisterRequest userRequest) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(userService.register(userRequest));
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<UserLoginResponse> login(@Valid @RequestBody UserLoginRequest request) throws UsernameNotFoundException{
-        return ResponseEntity.ok(userService.login(request));
-    }
-
     @GetMapping("/getAll")
     public ResponseEntity<List<UserResponse>> getAll(){
         return ResponseEntity.ok(userService.getAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponse> getUserbyId(@PathVariable("id") @Valid @NotNull Long id){
+        return ResponseEntity.ok(userService.getById(id));
+    }
+
+    @PatchMapping("/me")
+    public ResponseEntity<UserResponse> updateUser(@RequestHeader(name = "Authorization") String token,
+                                                          @RequestBody @Valid UserUpdateRequest request) throws IOException {
+        UserDetailsResponse update = userService.updateBasicUser(request, token);
+        return ResponseEntity.ok().body(update);
+
     }
 
 

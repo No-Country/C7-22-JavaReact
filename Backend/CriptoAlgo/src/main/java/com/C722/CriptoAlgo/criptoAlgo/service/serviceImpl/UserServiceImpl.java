@@ -78,8 +78,10 @@ return userMapper.userEntityToResponse(entity);
     }
 
     @Override
-    public UserResponse getById() {
-        return null;
+    public UserResponse getById(Long id) {
+        UserEntity entity = userRepository.findById(id).get();
+        UserResponse response = userMapper.userEntityToResponse(entity);
+        return response;
     }
 
     @Override

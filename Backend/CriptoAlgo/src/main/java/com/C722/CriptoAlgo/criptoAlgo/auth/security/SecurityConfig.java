@@ -53,7 +53,7 @@ public class SecurityConfig  {
         httpSecurity.csrf().disable()
 
                 // Auth
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/users/register", "/users/login").permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/**" /*"/users/login"*/).permitAll()
 
                 .antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
                 // Users
