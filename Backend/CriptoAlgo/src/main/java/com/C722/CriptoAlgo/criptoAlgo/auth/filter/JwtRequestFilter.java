@@ -1,4 +1,6 @@
 package com.C722.CriptoAlgo.criptoAlgo.auth.filter;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import com.C722.CriptoAlgo.criptoAlgo.auth.service.UserDetailsCustomService;
 import com.C722.CriptoAlgo.criptoAlgo.auth.utils.JwtUtils;
@@ -7,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -15,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class JwtRequestFilter {
+public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private UserDetailsCustomService userDetailsCustomService;
     @Autowired

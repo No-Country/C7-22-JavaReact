@@ -18,6 +18,7 @@ import com.C722.CriptoAlgo.criptoAlgo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -71,7 +72,9 @@ return userMapper.userEntityToResponse(entity);
 
     @Override
     public List<UserResponse> getAll() {
-        return null;
+        List<UserEntity> users = userRepository.findAll();
+        List<UserResponse> responses = userMapper.userEntityListToResponse(users);
+        return responses;
     }
 
     @Override

@@ -10,10 +10,17 @@ import org.springframework.stereotype.Component;
 
 import javax.management.relation.Role;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Component
 public class UserMapper {
+
+    DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
    public UserEntity registerRequestToEntity(UserRegisterRequest userRequest, Set<RoleEntity> roles){
       UserEntity entity = new UserEntity();
@@ -34,12 +41,21 @@ public class UserMapper {
       return response;
    }
 
+   public List<UserResponse> userEntityListToResponse(List<UserEntity> users){
+       List<UserResponse> response = new ArrayList<>();
+
+       for(UserEntity user: users){
+           response.add(userEntityToResponse(user));
+       }
+       return response;
+   }
+
    public UserLoginResponse loginRequestToResponse(UserLoginRequest request, String token){
        UserLoginResponse response = new UserLoginResponse();
        response.setEmail(request.getEmail());
        response.setMessage("Bienvenido");
        response.setToken(token);
-       response.setTime(new Timestamp(System.currentTimeMillis()));
+       response.setTime((dft.format(LocalDateTime.now())));
        return response;
    }
 

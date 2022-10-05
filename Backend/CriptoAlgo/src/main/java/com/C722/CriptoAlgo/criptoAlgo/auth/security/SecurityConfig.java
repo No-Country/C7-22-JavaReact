@@ -4,8 +4,10 @@ package com.C722.CriptoAlgo.criptoAlgo.auth.security;
 import com.C722.CriptoAlgo.criptoAlgo.auth.RoleEnum;
 import com.C722.CriptoAlgo.criptoAlgo.auth.filter.JwtRequestFilter;
 import com.C722.CriptoAlgo.criptoAlgo.auth.service.UserDetailsCustomService;
+import com.C722.CriptoAlgo.criptoAlgo.auth.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -24,33 +26,23 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.servlet.Filter;
 
+@Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true,jsr250Enabled = true)
 public class SecurityConfig  {
     @Autowired
     private UserDetailsCustomService userDetailsCustomService;
+
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
-    /*@Bean
-    public UserDetailsService userDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder){
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("user")
-                .password(bCryptPasswordEncoder.encode("userPass"))
-                .roles("USER")
-                .build());
-        manager.createUser(User.withUsername("admin")
-                .password(bCryptPasswordEncoder.encode("adminPass"))
-                .roles("USER", "ADMIN")
-                .build());
-        return manager;
-    }*/
+
 
     @Bean
     public AuthenticationManager authManager(HttpSecurity http, BCryptPasswordEncoder bCryptPasswordEncoder, UserDetailsService userDetailsService)
             throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(userDetailsService)
+                .userDetailsService(userDetailsCustomService)
                 .passwordEncoder(bCryptPasswordEncoder)
                 .and()
                 .build();
@@ -59,12 +51,13 @@ public class SecurityConfig  {
 @Bean
     public SecurityFilterChain  filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
+
                 // Auth
                 .authorizeRequests().antMatchers(HttpMethod.POST, "/users/register", "/users/login").permitAll()
 
                 .antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
                 // Users
-                .antMatchers(HttpMethod.GET,"/users").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
+                .antMatchers(HttpMethod.GET,"/users/getAll").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
                 .antMatchers(HttpMethod.PATCH,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
                 .antMatchers(HttpMethod.DELETE,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
                 .antMatchers(HttpMethod.PATCH,"/users/**").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
@@ -76,7 +69,7 @@ public class SecurityConfig  {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
 
-        //httpSecurity.addFilterBefore((Filter) jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
         return httpSecurity.build();
     }
@@ -93,36 +86,5 @@ public class SecurityConfig  {
     public PasswordEncoder PasswordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
-    /*public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
-    @Bean
-    public SecurityFilterChain  filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf().disable()
-                // Auth
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/login", "/auth/register").permitAll()
-
-                .antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                // Users
-                .antMatchers(HttpMethod.GET,"/users").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
-                .antMatchers(HttpMethod.PATCH,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                .antMatchers(HttpMethod.DELETE,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                .antMatchers(HttpMethod.PATCH,"/users/**").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
-                .antMatchers(HttpMethod.DELETE,"/users/**").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
-
-                .anyRequest().authenticated()
-                .and().exceptionHandling()
-                .and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-
-        httpSecurity.addFilterBefore((Filter) jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return httpSecurity.build();
-    }*/
-
-
 
 }

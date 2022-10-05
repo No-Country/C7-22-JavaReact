@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping (path = "/users")
@@ -31,6 +29,11 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<UserLoginResponse> login(@Valid @RequestBody UserLoginRequest request) throws UsernameNotFoundException{
         return ResponseEntity.ok(userService.login(request));
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<UserResponse>> getAll(){
+        return ResponseEntity.ok(userService.getAll());
     }
 
 
