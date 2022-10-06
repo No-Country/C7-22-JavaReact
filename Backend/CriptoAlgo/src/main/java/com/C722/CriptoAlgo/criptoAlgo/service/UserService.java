@@ -10,17 +10,11 @@ import java.util.List;
 
 public interface UserService {
 
-    UserResponse register (UserRegisterRequest user);
-
-    UserLoginResponse login(UserLoginRequest request);
-
      List<UserResponse> getAll();
 
      UserResponse getById(Long id);
 
-     UserResponse updateById(Long id, UserUpdateRequest request);
+     void deleteById(Long id);
 
-     void delteById(Long id);
-
-
+    UserResponse updateBasicUser(UserUpdateRequest request, String token);
 }

@@ -2,6 +2,7 @@ package com.C722.CriptoAlgo.criptoAlgo.controller;
 
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserLoginRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserRegisterRequest;
+import com.C722.CriptoAlgo.criptoAlgo.models.request.UserUpdateRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserLoginResponse;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
 import com.C722.CriptoAlgo.criptoAlgo.service.UserService;
@@ -34,10 +35,16 @@ public class UserController {
 
     @PatchMapping("/me")
     public ResponseEntity<UserResponse> updateUser(@RequestHeader(name = "Authorization") String token,
-                                                          @RequestBody @Valid UserUpdateRequest request) throws IOException {
-        UserDetailsResponse update = userService.updateBasicUser(request, token);
+                                                          @RequestBody @Valid UserUpdateRequest request) {
+        UserResponse update = userService.updateBasicUser(request, token);
         return ResponseEntity.ok().body(update);
 
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable("id")@Valid @NotNull Long id) {
+        userService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 

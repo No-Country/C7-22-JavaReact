@@ -38,37 +38,9 @@ public class UserServiceImpl implements UserService {
     private UserDetailsCustomService userDetailsCustomService;
     @Autowired
     private UserMapper userMapper;
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
-    @Override
-    public UserResponse register(UserRegisterRequest userRequest) {
-        if (userRepository.findByEmail(userRequest.getEmail()).isPresent()){
-            throw new UserAlreadyExistException();
-        }
 
-        Set<RoleEntity> roles = roleRepository.findByName(RoleEnum.USER.getSimpleRoleName());
-        if (roles.isEmpty()) {
-            RoleEntity role = new RoleEntity();
-            role.setName(RoleEnum.USER.getSimpleRoleName());
-            role = roleRepository.save(role);
-        }
 
-        userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-       UserEntity entity = userMapper.registerRequestToEntity(userRequest, roles);
-        userRepository.save(entity);
-
-return userMapper.userEntityToResponse(entity);
-    }
-
-    @Override
-    public UserLoginResponse login(UserLoginRequest request) {
-
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            String token = generateToken(request.getEmail());
-            UserLoginResponse response = userMapper.loginRequestToResponse(request,token);
-            return response;
-    }
 
     @Override
     public List<UserResponse> getAll() {
@@ -85,16 +57,26 @@ return userMapper.userEntityToResponse(entity);
     }
 
     @Override
-    public UserResponse updateById(Long id, UserUpdateRequest request) {
-        return null;
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
     }
 
     @Override
-    public void delteById(Long id) {
-
+    public UserResponse updateBasicUser(UserUpdateRequest request, String token) {
+        String userToken = rebuildToken(token);
+        UserEntity entity = userRepository.findByEmail( jwtUtils.extractUsername(userToken)).get();
+        userMapper.updateRequestToEntity(request, entity);
+        userRepository.save(entity);
+        return userMapper.userEntityToResponse(entity);
     }
 
     private String generateToken(String userRequest) {
         return jwtUtils.generateToken(userDetailsCustomService.loadUserByUsername(userRequest));
+    }
+
+    public String rebuildToken(String token){
+        String [] part = token.split(" ");
+        String token2 = part[1];
+        return token2;
     }
 }

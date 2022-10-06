@@ -4,8 +4,11 @@ import com.C722.CriptoAlgo.criptoAlgo.models.entity.RoleEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserLoginRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserRegisterRequest;
+import com.C722.CriptoAlgo.criptoAlgo.models.request.UserUpdateRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserLoginResponse;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.management.relation.Role;
@@ -19,6 +22,9 @@ import java.util.Set;
 
 @Component
 public class UserMapper {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     DateTimeFormatter dft = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
@@ -57,6 +63,16 @@ public class UserMapper {
        response.setToken(token);
        response.setTime((dft.format(LocalDateTime.now())));
        return response;
+   }
+
+   public UserEntity updateRequestToEntity(UserUpdateRequest request,UserEntity entity){
+       if(request.getFirstName() != null && !request.getFirstName().isEmpty() && !request.getFirstName().isBlank() ){
+           entity.setFirstName(request.getFirstName());}
+       if(request.getLastName() != null && !request.getLastName().isEmpty() && !request.getLastName().isBlank()){
+           entity.setLastName(request.getLastName());}
+       if(request.getPassword() != null && !request.getPassword().isEmpty() && !request.getLastName().isBlank()){
+           entity.setPassword(passwordEncoder.encode(request.getPassword()));}
+       return entity;
    }
 
 }
