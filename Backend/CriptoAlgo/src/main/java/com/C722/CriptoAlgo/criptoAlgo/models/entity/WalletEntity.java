@@ -8,6 +8,9 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -24,33 +27,63 @@ public class WalletEntity {
     private Long id;
 
     @Column(name= "owner_id")
-    private Long ownerid;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private Long ownerId;
 
-    @Column(name= "usd_balance")// revisar si el tipo de dato es correcto con pruebas
+    @Column(name= "usd_balance")
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private Double usdBalance;
 
     @Column(name = "argpesos_balance")
-    private Double argpesosBalance;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private Double argPesosBalance;
 
     @Column(name = "usdt_balance")
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private Double usdtBalance;
 
     @Column(name = "usdc_balance")
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private Double usdcBalance;
 
     @Column(name = "busd_balance")
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private Double busdBalance;
 
     @Column(name = "btc_balance")
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private Double btcBalance;
 
     @Column(name = "eth_balance")
+    @NotNull
+    @NotEmpty
+    @NotBlank
     private Double ethBalance;
 
     @Column(name = "bnb_balance")
-    private Double bnbalance;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private Double bnbBalance;
 
     @Column(name = "ada_balance")
-    private Double ADABalance;
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    private Double adaBalance;
 
 }
