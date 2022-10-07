@@ -1,28 +1,18 @@
 package com.C722.CriptoAlgo.criptoAlgo.service.serviceImpl;
 
-import com.C722.CriptoAlgo.criptoAlgo.Exceptions.UserAlreadyExistException;
-import com.C722.CriptoAlgo.criptoAlgo.auth.RoleEnum;
 import com.C722.CriptoAlgo.criptoAlgo.auth.service.UserDetailsCustomService;
 import com.C722.CriptoAlgo.criptoAlgo.auth.utils.JwtUtils;
-import com.C722.CriptoAlgo.criptoAlgo.models.entity.RoleEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.mapper.UserMapper;
-import com.C722.CriptoAlgo.criptoAlgo.models.request.UserLoginRequest;
-import com.C722.CriptoAlgo.criptoAlgo.models.request.UserRegisterRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserUpdateRequest;
-import com.C722.CriptoAlgo.criptoAlgo.models.response.UserLoginResponse;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
 import com.C722.CriptoAlgo.criptoAlgo.repository.RoleRepository;
 import com.C722.CriptoAlgo.criptoAlgo.repository.UserRepository;
 import com.C722.CriptoAlgo.criptoAlgo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
