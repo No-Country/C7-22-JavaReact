@@ -1,0 +1,50 @@
+.divContainerJob{
+    display : flex;
+    flex-direction : row;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    justify-content: center;
+    
+}
+.sizeImg{
+    width: 500px;
+    height: 300px;
+    
+}
+.imgLeft{
+    margin-left: 10% ;
+}
+
+
+.divOurValues{
+   padding-left: 16%;
+   padding-right: 20%;
+   padding-bottom: 2%;
+}
+
+.padLeft2{
+    margin-left: 50%;
+}
+
+
+.padLeft1{
+    margin-left: 20%;
+}
+
+.marginLeft{
+    margin-left: 35%;
+    margin-bottom: 10%;
+    margin-top: 8%;
+}
+
+.borderStyle{
+    border-style: 1px solid #718f8f;
+    border-radius: 30px;
+    
+}
+
+.divVacantes{
+    display: flex;
+    justify-content: center;
+    margin: 11%
+}
