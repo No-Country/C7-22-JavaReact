@@ -15,6 +15,7 @@ import com.C722.CriptoAlgo.criptoAlgo.repository.RoleRepository;
 import com.C722.CriptoAlgo.criptoAlgo.repository.UserRepository;
 import com.C722.CriptoAlgo.criptoAlgo.service.AuthService;
 import com.C722.CriptoAlgo.criptoAlgo.service.UserService;
+import com.C722.CriptoAlgo.criptoAlgo.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,6 +41,8 @@ public class AuthServiceImpl implements AuthService {
         private UserMapper userMapper;
         @Autowired
         private AuthenticationManager authenticationManager;
+        @Autowired
+        WalletService walletService;
 
         @Override
         public UserResponse register(UserRegisterRequest userRequest) {
@@ -56,6 +59,7 @@ public class AuthServiceImpl implements AuthService {
 
             userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
             UserEntity entity = userMapper.registerRequestToEntity(userRequest, roles);
+            entity.setWallet(walletService.create(entity.getId()));
             userRepository.save(entity);
 
             return userMapper.userEntityToResponse(entity);

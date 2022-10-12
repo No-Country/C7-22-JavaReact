@@ -1,10 +1,15 @@
 package com.C722.CriptoAlgo.criptoAlgo.models.response;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+@Getter
+@Setter
 public class WalletResponse {
 
     private Long id;
@@ -25,5 +30,5 @@ public class WalletResponse {
 
     private Double bnbalance;
 
-    private Double ADABalance;
+    private Double adaBalance;
 }

@@ -3,27 +3,30 @@ package com.C722.CriptoAlgo.criptoAlgo.models.request;
 import lombok.Getter;
 import lombok.Setter;
 
+
+
 @Getter
 @Setter
 public class WalletUpdateRequest {
 
 
-        private Double usdBalance;
 
-        private Double argpesosBalance;
+        private String usdBalance;
 
-        private Double usdtBalance;
+        private String argpesosBalance;
 
-        private Double usdcBalance;
+        private String usdtBalance;
 
-        private Double busdBalance;
+        private String usdcBalance;
 
-        private Double btcBalance;
+        private String busdBalance;
 
-        private Double ethBalance;
+        private String btcBalance;
 
-        private Double bnBalance;
+        private String ethBalance;
 
-        private Double ADABalance;
+        private String bnBalance;
+
+        private String ADABalance;
 
     }

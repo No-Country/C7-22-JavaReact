@@ -60,10 +60,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.userEntityToResponse(entity);
     }
 
-    private String generateToken(String userRequest) {
-        return jwtUtils.generateToken(userDetailsCustomService.loadUserByUsername(userRequest));
-    }
-
     public String rebuildToken(String token){
         String [] part = token.split(" ");
         String token2 = part[1];

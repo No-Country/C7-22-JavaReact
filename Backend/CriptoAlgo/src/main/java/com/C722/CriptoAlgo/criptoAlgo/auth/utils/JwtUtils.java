@@ -57,4 +57,10 @@ public class JwtUtils {
         return (email.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
+    public String rebuildToken(String token){
+        String [] part = token.split(" ");
+        String token2 = part[1];
+        return token2;
+    }
+
 }

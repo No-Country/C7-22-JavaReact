@@ -5,8 +5,10 @@ import com.C722.CriptoAlgo.criptoAlgo.models.request.UserRegisterRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.UserUpdateRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserLoginResponse;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 public interface UserService {
 
