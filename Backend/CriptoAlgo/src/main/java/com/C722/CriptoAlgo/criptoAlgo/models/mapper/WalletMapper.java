@@ -51,10 +51,9 @@ public class WalletMapper {
 
     }
 
-    public WalletEntity newWalletMapper(Long userId) {
+    public WalletEntity newWalletMapper() {
 
         WalletEntity entity = new WalletEntity();
-        entity.setOwnerId(userId);
         entity.setAdaBalance(0d);
         entity.setBnbBalance(0d);
         entity.setArgPesosBalance(0d);

@@ -23,7 +23,7 @@ public class UserDetailsCustomService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    @SuppressWarnings("unused")
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<UserEntity> userDB = userRepository.findByEmail(email);

@@ -31,8 +31,8 @@ public class WalletServiceImpl implements WalletService {
     PricesController pricesController;
 
     @Override
-    public WalletEntity create(Long userId) {
-        WalletEntity wallet = walletMapper.newWalletMapper(userId);
+    public WalletEntity create() {
+        WalletEntity wallet = walletMapper.newWalletMapper();
         return wallet;
     }
 
@@ -42,8 +42,12 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public WalletResponse update(WalletUpdateRequest request, String Token) {
-        return null;
+    public WalletResponse update(WalletUpdateRequest request, String token) {
+        String userToken = jwtUtils.rebuildToken(token);
+        WalletEntity entity = userRepository.findWalletByEmail(jwtUtils.extractUsername(userToken)).get();
+        walletRepository.save(entity);
+        WalletResponse response = walletMapper.userEntityToResponse(entity);
+        return response;
     }
 
     @Override

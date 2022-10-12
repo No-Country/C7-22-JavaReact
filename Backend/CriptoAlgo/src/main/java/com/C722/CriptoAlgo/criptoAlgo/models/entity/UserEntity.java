@@ -50,7 +50,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinTable(name = "wallets_users",
             joinColumns =
                     { @JoinColumn(name = "user_id", referencedColumnName = "id") },

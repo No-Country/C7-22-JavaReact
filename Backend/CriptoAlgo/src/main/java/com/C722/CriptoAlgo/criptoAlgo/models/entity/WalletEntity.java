@@ -26,12 +26,6 @@ public class WalletEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name= "owner_id")
-    @NotNull
-    @NotEmpty
-    @NotBlank
-    private Long ownerId;
-
     @Column(name= "usd_balance")
     @NotNull
     @NotEmpty

@@ -53,9 +53,14 @@ public class SecurityConfig  {
         httpSecurity.csrf().disable()
 
                 // Auth
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/**" /*"/users/login"*/).permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/**", "/auth/login").permitAll()
 
-                .antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+                //.antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+
+                //Wallet
+                .antMatchers(HttpMethod.GET,"/wallet/exchange/**").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+
+
                 // Users
                 .antMatchers(HttpMethod.GET,"/prices/**").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface WalletService {
 
-   WalletEntity create( Long userId);
+   WalletEntity create();
 
    List<WalletResponse> getAll();
 
