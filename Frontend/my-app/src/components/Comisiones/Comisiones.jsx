@@ -2,7 +2,7 @@ import React from "react";
 import Criptomonedas from "./Criptomonedas";
 import Stablecoins from "./Stablecoins";
 import "./Comisiones.css";
-export default function () {
+export default function Comisiones()  {
     return (
         <>
             <div className="divComisiones">
