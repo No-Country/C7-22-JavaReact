@@ -10,7 +10,7 @@ export default function NavBar() {
           <Link to="/">
             <img
               className="imgLogo"
-              src="/images/logo.png"
+              src="/assets/logo.png"
               alt="Logo CriptoAlgo"
             />
           </Link>
