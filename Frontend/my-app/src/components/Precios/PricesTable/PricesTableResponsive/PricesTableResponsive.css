@@ -1,0 +1,26 @@
+.pricesTableResponsive{
+    display:none;
+}
+
+.titlePricesResponsive{
+    display: flex;
+    align-items: center;
+}
+
+.titlePricesResponsive h2{
+    position: relative;
+    left:10px;
+
+}
+
+.infoPricesResponsive{
+    position: relative;
+    left:100px;
+    text-align: right;
+}
+
+@media all and (max-width:900px){
+    .pricesTableResponsive{
+        display:block;
+    }
+}

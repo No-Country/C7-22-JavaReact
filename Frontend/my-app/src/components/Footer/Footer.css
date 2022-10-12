@@ -1,6 +1,6 @@
 .contentFooter{
-    border-top:4px solid;
-    border-bottom: 4px solid;
+    border-top:1px solid #D7D8D8;
+    border-bottom: 1px solid #D7D8D8;
     padding-top:60px;
     padding-bottom: 60px;
 }
@@ -17,17 +17,25 @@
 
 .listFooter{
     display: flex;
+    padding-left: 50px;
 }
 
 .list {
-    font-size: 25px;
+    font-size: 22px;
     text-align: center;
+   
 }
 
 .list li{
     list-style: none;  
-    padding-bottom:5px;  
+    padding-bottom:5px; 
+    color:black; 
 }
+
+.list li:hover{
+    color:blue;
+}
+
 
 
 
@@ -61,18 +69,27 @@
 }
 
 .copyright{
-    font-size: 26.6px;
+    font-size: 22px;
     text-align: center;
 }
 
 @media all and (max-width:770px){
     .listFooter{
         justify-content: center;
+        padding-top: 15px;
+        padding-left: 0px;
+    }
+
+    .list{
+        position: relative;
+        right:10px;
     }
 
     .socialFooter{
         display: flex;
         flex-direction: column;
         align-items: center;
+        position: relative;
+        right:12px;
     }
 }

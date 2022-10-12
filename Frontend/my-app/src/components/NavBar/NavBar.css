@@ -37,14 +37,13 @@
 .divRight{
    display: flex;
    justify-content: flex-end;
-   margin-left: 30%;
    align-items: center;
+   padding-left:230px;
 }
 
 .buttonStyle{
-
+    justify-self: end;
     background: #d7d8d8;
-    margin-right: 30px;
     width: 12rem;
     border-radius: 35px;
     margin: 20px;
