@@ -1,0 +1,28 @@
+.portfolioContainer{
+    padding-top:90px;
+}
+
+.titlesPortfolio {
+    display: flex;
+
+}
+
+.titlesPortfolio div {
+    font-weight: 700;
+    width: 150px;
+    height:40px;
+    text-align: center;
+}
+
+.criptosPortfolio{
+    display: flex;
+   
+
+}
+
+.criptosPortfolio div {
+    width: 150px;
+    height:40px;
+    text-align: center;
+
+}

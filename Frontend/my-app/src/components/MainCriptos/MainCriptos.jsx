@@ -1,8 +1,8 @@
 import './MainCriptos.css'
 export const MainCriptos = () => {
     return (
-        <div class="d-flex flex-row justify-content-around flex-wrap">
-                    <div class="d-flex flex-column justify-content-center align-items-center py-4 criptoCard">
+        <div className="d-flex flex-row justify-content-around flex-wrap">
+                    <div className="d-flex flex-column justify-content-center align-items-center py-4 criptoCard">
                         <div className="d-flex">
                             <img src="./assets/bitcoin.svg" alt="bitcoin" />
                         
@@ -16,7 +16,7 @@ export const MainCriptos = () => {
                         </div>
                         
                     </div>
-                    <div class="d-flex flex-column justify-content-center align-items-center py-4 criptoCard">
+                    <div className="d-flex flex-column justify-content-center align-items-center py-4 criptoCard">
                         <div className="d-flex">
                             <img src="./assets/ethereum.svg" alt="ethereum" />
                         
@@ -31,7 +31,7 @@ export const MainCriptos = () => {
                         
                     </div>
                     
-                    <div class="d-flex flex-column justify-content-center align-items-center py-4 criptoCard">
+                    <div className="d-flex flex-column justify-content-center align-items-center py-4 criptoCard">
                         <div className="d-flex">
                             <img src="./assets/cardano.svg" alt="cardano" />
                         

@@ -1,0 +1,76 @@
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    padding:100px 0px;
+   
+}
+
+.formLoginContainer{
+    border:1px solid #D7D8D8;
+    padding:50px 30px 150px 30px;
+}
+
+.linksLogin{
+    display: flex;
+    flex-direction: column;
+    padding-top:10px;
+}
+
+.inputLogin{
+    width: 420px;
+    height:40px;
+    border: 3px solid #D7D8D8;
+    border-radius: 8px;
+    padding:0px 12px;
+    
+    
+}
+
+.linksLogin input {
+    margin-top: 30px;
+    border-radius: 32px;
+    height:45px;
+    text-transform: none;
+    font-size: 20px;
+    
+}
+
+.passwordReset {
+    text-transform: none;
+    font-weight: 700;
+}
+
+
+
+.inputContainer p{
+    font-weight: 500;
+}
+
+.inputLoginError{
+    width: 420px;
+    height:40px;
+    border: 1px solid red;
+    border-radius: 8px;
+    padding:0px 12px;
+    
+}
+
+.messageError {
+    
+    display: flex;
+    color:#F04449;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left:10px;
+    position: relative;
+    top:10px;
+   
+}
+
+@media all and (max-width:500px) {
+    .inputLogin{
+        width: 300px;
+        
+        
+    }
+}
