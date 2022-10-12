@@ -15,15 +15,15 @@ export const Home = () => {
                     </div>
                 </div>
             </div>
-            <div class="d-flex flex-row justify-content-around flex-wrap">
-                    <div class="d-flex flex-column align-items-center py-4 infoHome">
+            <div className="d-flex flex-row justify-content-around flex-wrap">
+                    <div className="d-flex flex-column align-items-center py-4 infoHome">
                         <h3>+ 103,892</h3>
                         <p>Transacciones realizadas</p>
                     </div>
-                    <div class="d-flex flex-column align-items-center py-4 infoHome">
+                    <div className="d-flex flex-column align-items-center py-4 infoHome">
                         <h3>5,428</h3>
                         <p>Usuarios que confían</p>
-                    </div><div class="d-flex flex-column align-items-center py-4 infoHome">
+                    </div><div className="d-flex flex-column align-items-center py-4 infoHome">
                         <h3>+ 103,892</h3>
                         <p>Transacciones realizadas</p>
                     </div>

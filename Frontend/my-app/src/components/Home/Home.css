@@ -15,6 +15,7 @@
 .titleFirstSection{
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
     left:200px;
     top:20px;
@@ -50,4 +51,16 @@
 .sentimentContainer img {
     width:600px;
     height:320px;
+}
+
+@media all and (max-width:630px) {
+    .titleFirstSection{
+        left: 50px;
+        
+    }
+
+    .sentimentContainer img {
+        width:350px;
+        height:186px;
+    }
 }

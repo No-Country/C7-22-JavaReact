@@ -1,0 +1,100 @@
+.registerContainer{
+    display: flex;
+    justify-content: center;
+    padding:100px 0px;
+   
+}
+
+.formRegisterContainer{
+    border:1px solid #D7D8D8;
+    padding:50px 30px 150px 30px;
+}
+
+.linksRegister{
+    display: flex;
+    flex-direction: column;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+.inputRegister{
+    width: 420px;
+    height:40px;
+    border: 3px solid #D7D8D8;
+    border-radius: 8px;
+    padding:0px 12px;
+    
+}
+
+.inputRegisterError{
+    width: 420px;
+    height:40px;
+    border: 1px solid red;
+    border-radius: 8px;
+    padding:0px 12px;
+    
+}
+
+.linksRegister input {
+    margin-top: 30px;
+    border-radius: 32px;
+    height:45px;
+    text-transform: none;
+    font-size: 20px;
+    
+}
+
+.loginLink {
+    text-transform: none;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    color:rgb(88, 172, 88);
+}
+
+.loginLink:hover{
+    color:rgb(88, 172, 88);
+    text-decoration: underline;
+}
+
+.instructions {
+    font-size: 14px;
+    position: relative;
+    left:10px;
+}
+
+.titleInput{
+    font-weight: 500;
+}
+
+.messageError{
+    display: flex;
+    color:#F04449;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left:10px;
+    position:relative;
+    bottom:10px;
+}
+.messageErrorTwo{
+    display: flex;
+    color:#F04449;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left:10px;
+   
+}
+
+@media all and (max-width:500px) {
+    .inputRegister{
+        width: 300px;
+        
+        
+    }
+
+    .subtitle{
+        font-size: 15px;
+    }
+
+    
+}
