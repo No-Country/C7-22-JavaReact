@@ -3,7 +3,9 @@ package com.C722.CriptoAlgo.criptoAlgo.models.mapper;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.WalletEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.WalletUpdateRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.WalletResponse;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WalletMapper {
 
     public WalletEntity updateRequestToEntity(WalletUpdateRequest request, WalletEntity entity) {
