@@ -3,6 +3,7 @@ package com.C722.CriptoAlgo.criptoAlgo.service.serviceImpl;
 import com.C722.CriptoAlgo.criptoAlgo.Exceptions.InsufficientAvailableBalanceException;
 import com.C722.CriptoAlgo.criptoAlgo.auth.utils.JwtUtils;
 import com.C722.CriptoAlgo.criptoAlgo.controller.PricesController;
+import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.WalletEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.mapper.WalletMapper;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.WalletUpdateRequest;
@@ -31,8 +32,8 @@ public class WalletServiceImpl implements WalletService {
     PricesController pricesController;
 
     @Override
-    public WalletEntity create() {
-        WalletEntity wallet = walletMapper.newWalletMapper();
+    public WalletEntity create(UserEntity owner) {
+        WalletEntity wallet = walletMapper.newWalletMapper(owner);
         return wallet;
     }
 

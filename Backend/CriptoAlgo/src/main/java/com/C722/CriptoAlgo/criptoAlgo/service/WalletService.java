@@ -1,5 +1,6 @@
 package com.C722.CriptoAlgo.criptoAlgo.service;
 
+import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.WalletEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.WalletUpdateRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.WalletResponse;
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface WalletService {
 
-   WalletEntity create();
+   WalletEntity create(UserEntity owner);
 
    List<WalletResponse> getAll();
 

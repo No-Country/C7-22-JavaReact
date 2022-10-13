@@ -1,5 +1,6 @@
 package com.C722.CriptoAlgo.criptoAlgo.models.mapper;
 
+import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.WalletEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.WalletUpdateRequest;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.WalletResponse;
@@ -51,7 +52,7 @@ public class WalletMapper {
 
     }
 
-    public WalletEntity newWalletMapper() {
+    public WalletEntity newWalletMapper(UserEntity owner) {
 
         WalletEntity entity = new WalletEntity();
         entity.setAdaBalance(0d);
@@ -63,6 +64,7 @@ public class WalletMapper {
         entity.setUsdcBalance(0d);
         entity.setUsdBalance(0d);
         entity.setEthBalance(0d);
+        entity.setOwner(owner);
 
         return entity;
     }

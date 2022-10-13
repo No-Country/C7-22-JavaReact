@@ -26,6 +26,9 @@ public class WalletEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @OneToOne(mappedBy = "wallet")
+    private UserEntity owner;
+
     @Column(name= "usd_balance")
     @NotNull
     @NotEmpty

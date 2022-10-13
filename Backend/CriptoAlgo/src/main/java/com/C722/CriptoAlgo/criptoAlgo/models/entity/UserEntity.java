@@ -1,5 +1,6 @@
 package com.C722.CriptoAlgo.criptoAlgo.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -17,7 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "users",schema = "targetSchemaName")
 @SQLDelete(sql= "UPDATE users SET deleted = true Where id=?")
 @Where(clause = "deleted=false")
 public class UserEntity {
@@ -50,7 +51,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "wallets_users",
             joinColumns =
                     { @JoinColumn(name = "user_id", referencedColumnName = "id") },
