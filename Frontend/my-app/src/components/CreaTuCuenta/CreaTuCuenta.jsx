@@ -6,9 +6,13 @@ import axios from '../../api/axios';
 
 export const CreaTuCuenta = () => {
     const [country, setCountry] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("initialState");
     const [newUsername, setNewUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [firstnameError, setFirstnameError] = useState(false);
+    const [lastnameError, setLastnameError] = useState(false);
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, SetPasswordError] = useState(false);
     const [confirmPasswordError, SetConfirmPasswordError] = useState(false);
@@ -21,6 +25,26 @@ export const CreaTuCuenta = () => {
       console.log(newUsername)
       console.log(newPassword)
       console.log(confirmPassword)
+    }
+
+    const firstnameValidation = () => {
+      const regEx = /^[a-zA-Z]{3,15}$/i;
+      if(regEx.test(firstname)){
+        setFirstnameError(false)
+      }else if
+        (!regEx.test(firstname) && firstname  === "") {
+          setFirstnameError(true)
+        }
+    }
+
+    const lastnameValidation = () => {
+      const regEx = /^[a-zA-Z]{3,15}$/i;
+      if(regEx.test(lastname)){
+        setLastnameError(false)
+      }else if
+        (!regEx.test(lastname) && lastname  === "") {
+          setLastnameError(true)
+        }
     }
 
     const emailValidation = () =>{
@@ -68,13 +92,18 @@ export const CreaTuCuenta = () => {
 
     const handleJoin = (e) => {
       e.preventDefault();
+      firstnameValidation();
+      lastnameValidation();
       emailValidation();
       passwordValidation();
       passwordConfirm();
 
       const data = {
+        firstname:firstname,
+        lastname:lastname,
         email:newUsername,
         password:newPassword
+        
        }
       
       axios.post(REGISTER_URL,data)
@@ -103,6 +132,36 @@ export const CreaTuCuenta = () => {
                     onChange={(options)=> setCountry(options.value)}
             />
            
+          </div>
+          <div className="pt-2">
+           <p className="titleInput">Nombres</p>
+           <input type="text" 
+                name="Firstname" 
+                placeholder="Nombres"
+                value={firstname}
+                onChange={(e)=> setFirstname(e.target.value)}
+                className={usernameError?"inputRegisterError":"inputRegister"} />
+                
+                
+            <p className="instructions">Ingresa tus nombres</p>
+            {firstnameError&&<div className="messageError"><label>
+                Ingresa un nombre con solo letras
+            </label></div>}
+          </div>
+          <div className="pt-2">
+           <p className="titleInput">Apellidos</p>
+           <input type="text" 
+                name="Lasttname" 
+                placeholder="Apellidos"
+                value={lastname}
+                onChange={(e)=> setLastname(e.target.value)}
+                className={usernameError?"inputRegisterError":"inputRegister"} />
+                
+                
+            <p className="instructions">Ingresa tus apellidos</p>
+            {lastnameError&&<div className="messageError"><label>
+                Ingresa un apellido con solo letras
+            </label></div>}
           </div>
           <div className="pt-2">
            <p className="titleInput">Correo electrónico</p>
