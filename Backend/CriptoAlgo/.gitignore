@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+ Frontend/my-app/node_modules/.cache/default-development/index.pack
