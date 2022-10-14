@@ -58,17 +58,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors(Customizer.withDefaults())
-                .csrf().disable()
+                .csrf().disable().authorizeRequests()
 
                 // Auth
 
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
+                .antMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
 
                 //.antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
 
                 //Wallet
-                .antMatchers(HttpMethod.GET, "/wallet/exchange/**").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                .antMatchers(HttpMethod.GET, "/users/getAll").permitAll()
+                .antMatchers(HttpMethod.GET, "/wallets/exchange/**").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+                .antMatchers(HttpMethod.GET, "/wallets/getAll").permitAll()
 
 
                 // Users
@@ -106,7 +106,7 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.
                 ignoring().
-                antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico");
+                antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico");//, "/auth/login");
     }
 
     @Bean

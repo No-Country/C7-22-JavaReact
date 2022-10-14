@@ -39,7 +39,9 @@ public class WalletServiceImpl implements WalletService {
 
     @Override
     public List<WalletResponse> getAll() {
-        return null;
+        List <WalletEntity> wallets = walletRepository.findAll();
+        List<WalletResponse> response= walletMapper.entityToResponseList(wallets);
+        return response;
     }
 
     @Override
@@ -47,9 +49,10 @@ public class WalletServiceImpl implements WalletService {
         String userToken = jwtUtils.rebuildToken(token);
         //WalletEntity entity = userRepository.findWalletByEmail(jwtUtils.extractUsername(userToken)).get();
         WalletEntity entity = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get()).get();
+        walletMapper.updateRequestToEntity(request, entity);
         walletRepository.save(entity);
-        WalletResponse response = walletMapper.userEntityToResponse(entity);
-        return response;
+        return walletMapper.entityToResponse(entity);
+
     }
 
     @Override
@@ -231,7 +234,7 @@ public class WalletServiceImpl implements WalletService {
         }
 
         walletRepository.save(entityDb);
-        return walletMapper.userEntityToResponse(entity);
+        return walletMapper.entityToResponse(entity);
     }
 
 

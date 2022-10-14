@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class WalletResponse {
 
-    private Long id;
+    private Long ownerId;
 
     private Double usdBalance;
 

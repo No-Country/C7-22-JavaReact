@@ -29,6 +29,9 @@ public class WalletEntity {
     @OneToOne(mappedBy = "wallet")
     private UserEntity owner;
 
+
+    private Boolean deleted = Boolean.FALSE;
+
     @Column(name= "usd_balance")
     @NotNull
     @NotEmpty

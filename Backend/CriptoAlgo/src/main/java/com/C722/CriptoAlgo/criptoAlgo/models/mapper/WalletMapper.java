@@ -3,8 +3,12 @@ package com.C722.CriptoAlgo.criptoAlgo.models.mapper;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.WalletEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.WalletUpdateRequest;
+import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.WalletResponse;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class WalletMapper {
@@ -69,9 +73,10 @@ public class WalletMapper {
         return entity;
     }
 
-    public WalletResponse userEntityToResponse(WalletEntity entity) {
+    public WalletResponse entityToResponse(WalletEntity entity) {
         WalletResponse response = new WalletResponse();
 
+        response.setOwnerId(entity.getOwner().getId());
         response.setAdaBalance(entity.getAdaBalance());
         response.setBnbalance(entity.getBnbBalance());
         response.setArgpesosBalance(entity.getArgPesosBalance());
@@ -81,6 +86,15 @@ public class WalletMapper {
         response.setUsdcBalance(entity.getUsdcBalance());
         response.setUsdBalance(entity.getUsdBalance());
         response.setEthBalance(entity.getEthBalance());
+
+        return response;
+    }
+
+    public List<WalletResponse> entityToResponseList(List<WalletEntity> wallets){
+        List<WalletResponse> response = new ArrayList<>();
+        for(WalletEntity wallet: wallets){
+            response.add(entityToResponse(wallet));
+        }
 
         return response;
     }
