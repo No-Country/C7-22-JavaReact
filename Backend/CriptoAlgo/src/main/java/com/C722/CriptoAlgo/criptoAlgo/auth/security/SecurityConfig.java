@@ -35,9 +35,12 @@ import javax.servlet.Filter;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
+
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig  {
+public class SecurityConfig {
     @Autowired
     private UserDetailsCustomService userDetailsCustomService;
 
@@ -55,52 +58,49 @@ public class SecurityConfig  {
                 .build();
     }
 
-@Bean
-    public SecurityFilterChain  filterChain(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity.cors(Customizer.withDefaults())
-        .csrf().disable()
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
+        return httpSecurity.cors(withDefaults())
+                .csrf(csrf -> csrf.disable())
 
                 // Auth
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/users/register", "/users/login").permitAll()
-                .antMatchers(HttpMethod.GET, "/users/getAll").permitAll()
-                .antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                // Users
-                //.antMatchers(HttpMethod.GET,"/users/getAll").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
-                .antMatchers(HttpMethod.PATCH,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                .antMatchers(HttpMethod.DELETE,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                .antMatchers(HttpMethod.PATCH,"/users/**").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
-                .antMatchers(HttpMethod.DELETE,"/users/**").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
+                .authorizeRequests(auth -> auth
+                        .antMatchers(HttpMethod.GET, "/users/getAll").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+                        .antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+                        // Users
+                        //.antMatchers(HttpMethod.GET,"/users/getAll").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
+                        /*.antMatchers(HttpMethod.PATCH,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+                        .antMatchers(HttpMethod.DELETE,"/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+                        .antMatchers(HttpMethod.PATCH,"/users/**").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
+                        .antMatchers(HttpMethod.DELETE,"/users/**").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())*/
 
-                .anyRequest().authenticated()
-                .and().exceptionHandling()
-                .and().sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                        .anyRequest().authenticated())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .httpBasic(withDefaults())
+                .exceptionHandling()
+                .and().addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class).build();
 
-
-       httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return httpSecurity.build();
     }
 
-/*    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http
-                .cors(Customizer.withDefaults()) // by default uses a Bean by the name of corsConfigurationSource
-                //.authorizeRequests(auth -> auth
-                        //.anyRequest().authenticated())
-                .httpBasic(Customizer.withDefaults())
-                .build();
-    }*/
+    /*    @Bean
+        SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+            return http
+                    .cors(Customizer.withDefaults()) // by default uses a Bean by the name of corsConfigurationSource
+                    //.authorizeRequests(auth -> auth
+                    //.anyRequest().authenticated())
+                    .httpBasic(Customizer.withDefaults())
+                    .build();
+        }*/
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-        configuration.setAllowedMethods(Arrays.asList("GET","PUT", "DELETE", "POST", "PATCH", "HEAD", "TRACE"));
-       configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-       //configuration.setAllowCredentials(true);
-       UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-       source.registerCorsConfiguration("/**", configuration);
-       return source;
+        configuration.setAllowedMethods(Arrays.asList("GET", "PUT", "DELETE", "POST", "PATCH", "HEAD", "TRACE"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowCredentials(true);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
 
@@ -108,11 +108,12 @@ public class SecurityConfig  {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.
                 ignoring().
-                antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico");
+                antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico", "/users/login",
+                        "/users/register");
     }
 
     @Bean
-    public PasswordEncoder PasswordEncoder(){
+    public PasswordEncoder PasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

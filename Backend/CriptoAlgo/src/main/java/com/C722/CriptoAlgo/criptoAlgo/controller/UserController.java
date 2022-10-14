@@ -10,6 +10,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,18 +29,13 @@ public class UserController {
     }
 
 
-    @PostMapping( path = "/login")
-    public ResponseEntity<UserLoginResponse> login(@Valid @RequestBody UserLoginRequest request) throws UsernameNotFoundException{
+    @PostMapping("/login")
+    public ResponseEntity<UserLoginResponse> login(@Valid @RequestBody UserLoginRequest request){ //throws UsernameNotFoundException{
         return ResponseEntity.ok(userService.login(request));
     }
 
     @GetMapping( path = "/getAll")
-    //@CrossOrigin
     public ResponseEntity<List<UserResponse>> getAll(){
-        /*HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Access-Control-Allow-Origin: *",
-                "Value-ResponseEntityBuilderWithHttpHeaders");
-        return ResponseEntity.ok().headers(responseHeaders).body(userService.getAll());*/
         return ResponseEntity.ok(userService.getAll());
     }
 
