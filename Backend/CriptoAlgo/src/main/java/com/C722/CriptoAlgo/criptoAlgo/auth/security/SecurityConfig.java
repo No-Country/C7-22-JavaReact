@@ -65,6 +65,8 @@ public class SecurityConfig {
 
                 // Auth
                 .authorizeRequests(auth -> auth
+                        .antMatchers(HttpMethod.POST, "/users/register").permitAll()
+                        .antMatchers(HttpMethod.POST,"/users/login").permitAll()
                         .antMatchers(HttpMethod.GET, "/users/getAll").hasAuthority(RoleEnum.USER.getSimpleRoleName())
                         .antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
                         // Users
@@ -82,15 +84,6 @@ public class SecurityConfig {
 
     }
 
-    /*    @Bean
-        SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-            return http
-                    .cors(Customizer.withDefaults()) // by default uses a Bean by the name of corsConfigurationSource
-                    //.authorizeRequests(auth -> auth
-                    //.anyRequest().authenticated())
-                    .httpBasic(Customizer.withDefaults())
-                    .build();
-        }*/
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -108,8 +101,8 @@ public class SecurityConfig {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.
                 ignoring().
-                antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico", "/users/login",
-                        "/users/register");
+                antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico"); //"/users/login",
+                        //"/users/register");
     }
 
     @Bean
