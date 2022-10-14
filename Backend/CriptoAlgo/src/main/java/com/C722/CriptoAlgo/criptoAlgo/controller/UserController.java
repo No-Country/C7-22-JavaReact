@@ -6,6 +6,7 @@ import com.C722.CriptoAlgo.criptoAlgo.models.response.UserLoginResponse;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
 import com.C722.CriptoAlgo.criptoAlgo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -26,13 +27,19 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.register(userRequest));
     }
 
-    @PostMapping("/login")
+
+    @PostMapping( path = "/login")
     public ResponseEntity<UserLoginResponse> login(@Valid @RequestBody UserLoginRequest request) throws UsernameNotFoundException{
         return ResponseEntity.ok(userService.login(request));
     }
 
-    @GetMapping("/getAll")
+    @GetMapping( path = "/getAll")
+    //@CrossOrigin
     public ResponseEntity<List<UserResponse>> getAll(){
+        /*HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin: *",
+                "Value-ResponseEntityBuilderWithHttpHeaders");
+        return ResponseEntity.ok().headers(responseHeaders).body(userService.getAll());*/
         return ResponseEntity.ok(userService.getAll());
     }
 
