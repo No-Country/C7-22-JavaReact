@@ -2,6 +2,7 @@ import './CreaTuCuenta.css'
 import { Link } from 'react-router-dom';
 import Select from 'react-select'
 import { useState } from 'react';
+import axios from '../../api/axios';
 
 export const CreaTuCuenta = () => {
     const [country, setCountry] = useState("");
@@ -11,6 +12,9 @@ export const CreaTuCuenta = () => {
     const [usernameError, setUsernameError] = useState(false);
     const [passwordError, SetPasswordError] = useState(false);
     const [confirmPasswordError, SetConfirmPasswordError] = useState(false);
+    const [success, setSuccess] = useState(false);
+
+    const REGISTER_URL= '/register'
 
     const loginService = () => {
       console.log(country)
@@ -62,23 +66,34 @@ export const CreaTuCuenta = () => {
 
     ]
 
-    const handleJoin = async (event) => {
+    const handleJoin = (e) => {
+      e.preventDefault();
       emailValidation();
       passwordValidation();
       passwordConfirm();
+
+      const data = {
+        email:newUsername,
+        password:newPassword
+       }
       
-      try {
-        console.log("Hola")
-      } catch(event){
-        console.log("Error")
-      }
+      axios.post(REGISTER_URL,data)
+
+      .then(res=>{
+        console.log(res)
+        setSuccess(true)
+      })
+
+      .catch(()=>{
+        console.log("No Server Response")
+      })
       
       
     }
 
-    return (
-        <div className="registerContainer">
-        <form  className="formRegisterContainer">
+    return ( <>{success?(<div>Registro exitoso!</div>):(
+<div className="registerContainer">
+        <form  onSubmit={handleJoin} className="formRegisterContainer">
           <h2>Crea una cuenta personal</h2>
           <p className="subtitle">Estas a unos pasos de entrar al mundo cripto.</p>
           <div className="pt-4">
@@ -95,7 +110,7 @@ export const CreaTuCuenta = () => {
                 name="Username" 
                 placeholder="Correo electrónico"
                 value={newUsername}
-                onChange={({target})=> setNewUsername(target.value)}
+                onChange={(e)=> setNewUsername(e.target.value)}
                 className={usernameError?"inputRegisterError":"inputRegister"} />
                 
                 
@@ -111,7 +126,7 @@ export const CreaTuCuenta = () => {
                 name="Password" 
                 placeholder="Contraseña"
                 value={newPassword}
-                onChange={({target})=> setNewPassword(target.value)}
+                onChange={(e)=> setNewPassword(e.target.value)}
                 className={passwordError?"inputRegisterError":"inputRegister"}/> 
             <p className="instructions">Mín. 8 caracteres con números y letras</p>   
             {passwordError&&<div className="messageError"><label>
@@ -124,7 +139,7 @@ export const CreaTuCuenta = () => {
            <input type="password"
                 name="confirmPassword" 
                 value={confirmPassword}
-                onChange={({target})=> setConfirmPassword(target.value)}
+                onChange={(e)=> setConfirmPassword(e.target.value)}
                 placeholder="Comfirma tu contraseña"
                 className={confirmPasswordError||passwordError?"inputRegisterError":"inputRegister"}/>   
                 {confirmPasswordError&&<div className="messageErrorTwo"><label>
@@ -134,16 +149,91 @@ export const CreaTuCuenta = () => {
             
           <div className="linksRegister">
           
-          <input 
-                 value="Comenzar"
-                 className="btn btn-success"
-                 onClick={handleJoin}/>
+          <button
+               
+                className="btn btn-success">
+          Comenzar
+          </button>
+          </div>
+          
+          <Link to="/iniciarsesion" className="loginLink"><p >Ya tengo una cuenta</p></Link> 
+        </form>
+      </div>
+
+
+
+
+    )}</>)
+  }
+        /*
+        <div className="registerContainer">
+        <form  onSubmit={handleJoin} className="formRegisterContainer">
+          <h2>Crea una cuenta personal</h2>
+          <p className="subtitle">Estas a unos pasos de entrar al mundo cripto.</p>
+          <div className="pt-4">
+            <p className="titleInput">País de residencia</p>
+            <Select 
+                    options={options}
+                    onChange={(options)=> setCountry(options.value)}
+            />
+           
+          </div>
+          <div className="pt-2">
+           <p className="titleInput">Correo electrónico</p>
+           <input type="text" 
+                name="Username" 
+                placeholder="Correo electrónico"
+                value={newUsername}
+                onChange={(e)=> setNewUsername(e.target.value)}
+                className={usernameError?"inputRegisterError":"inputRegister"} />
+                
+                
+            <p className="instructions">Registrate con el correo que más utilizas</p>
+            {usernameError&&<div className="messageError"><label>
+                Usa el formato nombre@ejemplo.com
+            </label></div>}
+          </div>
+
+          <div className="pt-2">
+           <p className="titleInput">Contraseña</p>
+           <input type="password"
+                name="Password" 
+                placeholder="Contraseña"
+                value={newPassword}
+                onChange={(e)=> setNewPassword(e.target.value)}
+                className={passwordError?"inputRegisterError":"inputRegister"}/> 
+            <p className="instructions">Mín. 8 caracteres con números y letras</p>   
+            {passwordError&&<div className="messageError"><label>
+                Digita una contraseña de 8 caracteres con al menos un <br/>numero y una letra
+            </label></div>}
+          </div>
+
+          <div className="pt-2">
+           <p className="titleInput">Confirma tu contraseña</p>
+           <input type="password"
+                name="confirmPassword" 
+                value={confirmPassword}
+                onChange={(e)=> setConfirmPassword(e.target.value)}
+                placeholder="Comfirma tu contraseña"
+                className={confirmPasswordError||passwordError?"inputRegisterError":"inputRegister"}/>   
+                {confirmPasswordError&&<div className="messageErrorTwo"><label>
+                Las contraseñas deben coincidir
+            </label></div>} 
+          </div>
+            
+          <div className="linksRegister">
+          
+          <button
+               
+                className="btn btn-success">
+          Comenzar
+          </button>
           </div>
           
           <Link to="/iniciarsesion" className="loginLink"><p >Ya tengo una cuenta</p></Link> 
         </form>
       </div>
     );
-}
+}*/
 
 

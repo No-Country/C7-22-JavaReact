@@ -6,14 +6,14 @@ import AuthContext from "../../context/AuthProvider";
 
 import axios from "../../api/axios";
 
-const LOGIN_URL = "/auth";
+const LOGIN_URL = "/users/login";
 export const IniciarSesion=()=> {
   const {setAuth} = useContext(AuthContext);
  /* const userRef = useRef();
   const errRef =useRef();*/
 
   const [errorMessage, setErrorMessage] = useState(false);
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   /*const [user, setUser] = useState(null);*/
   /*const [success, setSuccess] = useState(false);*/
@@ -39,23 +39,49 @@ export const IniciarSesion=()=> {
 
   /*loginService();*/
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
-    try {
+    const data = {
+      email:email,
+      password:password
+     }
+  
+      axios.post(LOGIN_URL,data)
+      .then(res => {
+          console.log(res)
+          setEmail("")
+          setPassword("")
+          const accessToken = res?.data?.accessToken;
+          setAuth({email,password,accessToken});
+          navigate("/plataforma")
+      })
+
+      .catch(()=>{
+        console.log("No Server Response")
+        setErrorMessage(true)
+        setTimeout(()=>{
+          setErrorMessage(false)
+        },5000)
+      })
+
+    /*try {
       const response = await axios.post(LOGIN_URL,
-          JSON.stringify({username,password}),
+          JSON.stringify({username:email,password:password}),
           {
             headers: { 'Content-Type': 'application/json'},
             withCredentials: true
           }
         );
+
+        
+
         console.log(JSON.stringify(response?.data));
         const accessToken = response?.data?.accessToken;
         setAuth({username,password,accessToken});
-        setUsername("")
+        setEmail("")
         setPassword("")
-        /*setSuccess(true);*/
+        setSuccess(true);
         navigate("/plataforma")
     } 
       catch (err) {
@@ -66,7 +92,7 @@ export const IniciarSesion=()=> {
           setErrorMessage(false)
         },5000)
       }
-    }
+    }*/
 
 
     
@@ -89,18 +115,18 @@ export const IniciarSesion=()=> {
   }
   return (
     <div className="loginContainer">
-      <form  className="formLoginContainer">
+      <form  onSubmit={handleLogin} className="formLoginContainer">
         <h2>Iniciar sesión</h2>
         <div className="pt-4 inputContainer">
           <p>Correo electrónico o nombre de usuario</p>
           <input type="text" 
-                  value={username}
-                  name="Username" 
+                  value={email}
+                  name="Email" 
                   placeholder="Correo electrónico o nombre de usuario"
-                  onChange={({target})=> setUsername(target.value)}
+                  onChange={(e)=> setEmail(e.target.value)}
                   autocomplete="off"
                   className={errorMessage?"inputLoginError":"inputLogin"}
-                  required
+                  
           />
                   
         </div>
@@ -110,8 +136,7 @@ export const IniciarSesion=()=> {
               value={password}
               name="Password" 
               placeholder="Contraseña"
-              onChange={({target})=> setPassword(target.value)}
-              required
+              onChange={(e)=> setPassword(e.target.value)}
               className={errorMessage?"inputLoginError":"inputLogin"} />
               {errorMessage&&<div className="messageError"><label>
                 Contraseña o usuario invalida 
@@ -121,10 +146,8 @@ export const IniciarSesion=()=> {
           
         <div className="linksLogin">
         <Link to="/"><button className="btn btn-light passwordReset">Olvide mi contraseña</button></Link> 
-        <input onClick={handleLogin}
-               value="Iniciar sesión"
-               className="btn btn-success"
-               />
+        <button className="btn btn-success">Iniciar sesión</button>
+        
         </div>
         
       </form>
