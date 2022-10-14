@@ -45,7 +45,8 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public WalletResponse update(WalletUpdateRequest request, String token) {
         String userToken = jwtUtils.rebuildToken(token);
-        WalletEntity entity = userRepository.findWalletByEmail(jwtUtils.extractUsername(userToken)).get();
+        //WalletEntity entity = userRepository.findWalletByEmail(jwtUtils.extractUsername(userToken)).get();
+        WalletEntity entity = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get()).get();
         walletRepository.save(entity);
         WalletResponse response = walletMapper.userEntityToResponse(entity);
         return response;
@@ -70,7 +71,7 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public WalletResponse exchangeFiatCrypto(WalletUpdateRequest request, String token, String fiat, String crypto) {
         String userToken = jwtUtils.rebuildToken(token);
-        WalletEntity entityDb = userRepository.findWalletByEmail(jwtUtils.extractUsername(userToken)).get();
+        WalletEntity entityDb = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get()).get();
         WalletEntity entity = new WalletEntity();
         walletMapper.updateRequestToEntity(request, entity);
        //ars-btc

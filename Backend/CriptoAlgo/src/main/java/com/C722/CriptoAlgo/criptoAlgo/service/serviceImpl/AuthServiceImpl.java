@@ -55,11 +55,12 @@ public class AuthServiceImpl implements AuthService {
                 RoleEntity role = new RoleEntity();
                 role.setName(RoleEnum.USER.getSimpleRoleName());
                 role = roleRepository.save(role);
+                roles.add(role);
             }
 
             userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
             UserEntity entity = userMapper.registerRequestToEntity(userRequest, roles);
-            entity.setWallet(walletService.create(entity));
+            //entity.setWallet(walletService.create(entity));
             userRepository.save(entity);
 
             return userMapper.userEntityToResponse(entity);
@@ -69,7 +70,7 @@ public class AuthServiceImpl implements AuthService {
         public UserLoginResponse login(UserLoginRequest request) {
 
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            String token = generateToken(request.getEmail());
+            String token =generateToken(request.getEmail());
             UserLoginResponse response = userMapper.loginRequestToResponse(request,token);
             return response;
         }

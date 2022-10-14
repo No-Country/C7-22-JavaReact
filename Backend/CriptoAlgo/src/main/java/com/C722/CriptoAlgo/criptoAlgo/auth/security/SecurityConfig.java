@@ -62,13 +62,13 @@ public class SecurityConfig {
 
                 // Auth
 
-                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/**", "/auth/login").permitAll()
+                .authorizeRequests().antMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
 
                 //.antMatchers(HttpMethod.GET, "/auth/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
 
                 //Wallet
                 .antMatchers(HttpMethod.GET, "/wallet/exchange/**").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                .antMatchers(HttpMethod.GET, "/prices/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/users/getAll").permitAll()
 
 
                 // Users
