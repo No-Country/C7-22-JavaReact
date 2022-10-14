@@ -10,7 +10,7 @@ export default function NavBar() {
           <Link to="/">
             <img
               className="imgLogo"
-              src="/images/logo.png"
+              src="/assets/logo.png"
               alt="Logo CriptoAlgo"
             />
           </Link>
@@ -30,19 +30,19 @@ export default function NavBar() {
               <Link to="/" className=" active liLinkNav">
                 <li> HOME </li>
               </Link>
-              <Link to="/" className=" active liLinkNav">
+              <Link to="/precios" className=" active liLinkNav">
                 <li> PRECIOS </li>
               </Link>
               <Link to="/ayuda" className=" active liLinkNav">
                 <li> AYUDA </li>
               </Link>
             </ul>
-            <Link to="/">
+            <Link to="/register">
               <button className="buttonStyle" type="button">
                 Creá tu cuenta
               </button>
             </Link>
-            <Link to="/">
+            <Link to="/iniciarsesion">
               <button className="buttonStyle" type="button">
                 Iniciar Sesión
               </button>

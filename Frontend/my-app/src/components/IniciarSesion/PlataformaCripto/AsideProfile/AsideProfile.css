@@ -1,0 +1,21 @@
+.infoAsideProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.infoAsideProfile h2{
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.infoAsideProfile img{
+    width: 150px;
+    height:150px;
+}
+
+.help{
+    text-align: center;
+
+}
