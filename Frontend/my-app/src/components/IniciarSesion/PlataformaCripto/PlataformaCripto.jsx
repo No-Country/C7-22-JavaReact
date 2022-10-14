@@ -19,3 +19,12 @@ export const PlataformaCripto = () => {
     );
 }
 
+/*"usdBalance": 0.0,
+        "argpesosBalance": 0.0,
+        "usdtBalance": 0.0,
+        "usdcBalance": 0.0,
+        "busdBalance": 0.0,
+        "btcBalance": 0.0,
+        "ethBalance": 0.0,
+        "bnbalance": 0.0,
+        "adaBalance": 0.0 */
