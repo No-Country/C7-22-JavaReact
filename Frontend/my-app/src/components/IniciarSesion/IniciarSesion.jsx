@@ -52,7 +52,8 @@ export const IniciarSesion=()=> {
           console.log(res)
           setEmail("")
           setPassword("")
-          const accessToken = res?.data?.accessToken;
+          const accessToken = res?.data?.token;
+          console.log(accessToken);
           setAuth({email,password,accessToken});
           navigate("/plataforma")
       })

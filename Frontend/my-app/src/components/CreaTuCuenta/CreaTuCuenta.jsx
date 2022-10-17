@@ -18,7 +18,7 @@ export const CreaTuCuenta = () => {
     const [confirmPasswordError, SetConfirmPasswordError] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const REGISTER_URL= '/register'
+    const REGISTER_URL= 'users/register'
 
     const loginService = () => {
       console.log(country)
@@ -99,8 +99,8 @@ export const CreaTuCuenta = () => {
       passwordConfirm();
 
       const data = {
-        firstname:firstname,
-        lastname:lastname,
+        firstName:firstname,
+        lastName:lastname,
         email:newUsername,
         password:newPassword
         
