@@ -46,13 +46,13 @@ public class WalletController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PutMapping("/exchange/{fiat}/{crypto}")
+    /*@PutMapping("/exchange/{fiat}/{crypto}")
     public ResponseEntity<WalletResponse> exchangeFiatCrypto(@RequestHeader(name= "Authorization") String token,
                                                    @RequestBody @Valid WalletUpdateRequest request,
                                                              @PathVariable("fiat")@Valid @NotNull String fiat,
                                                              @PathVariable("crypto")@Valid @NotNull String crypto){
         WalletResponse update = walletService.exchangeFiatCrypto(request, token, fiat, crypto);
         return ResponseEntity.ok().body(update);
-    }
+    }*/
 
 }
