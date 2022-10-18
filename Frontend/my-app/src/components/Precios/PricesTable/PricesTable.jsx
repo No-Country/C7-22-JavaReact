@@ -1,7 +1,28 @@
 import './PricesTable.css'
 import { Search } from '../Search/Search';
 import { PricesTableResponsive } from './PricesTableResponsive/PricesTableResponsive';
+import { useContext, useState} from 'react';
+import { CoinsContext } from '../../../context/CoinsContext';
+import { CoinsRows } from './CoinsRows';
+
 export const PricesTable = () => {
+    const {coins} =useContext(CoinsContext)
+    console.log(coins)
+
+    const [search, setSearch] = useState("");
+    console.log(search)
+
+
+    const handleSearch=(e)=>{
+      setSearch(e.target.value)
+    }
+
+    const titles = ["", "","Nombre", "Precio", "Variación", "24h Volumen", ""]
+    
+    let filteredCoins = coins.filter((coin) => coin.name.toLowerCase().includes(search))
+
+   
+
     return (
         <div className="container-fluid pricesTableContainer">
         <div className="row">
@@ -12,49 +33,24 @@ export const PricesTable = () => {
                     <button className="btn btn-dark">Todas</button>
                     <button className="btn btn-light">Stablecoins</button>
                 </div>
-                <Search/>
+                <Search handleSearch={handleSearch}/>
               </div>
             </div>
             <table className="table table-hover responsiveTablePrices">
               <thead>
                 <tr>
-                  <th></th>
-                  <th>Nombre</th>
-                  <th>Precio</th>
-                  <th>Volumen</th>
-                  <th>Variacion</th>
-                  <th>Market cap</th>
-                  <th></th>
+                
+                  {titles.map((title)=>(
+                    <th>{title}</th>
+                  ))}
+                
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><img className="criptoCards" src="./assets/bitcoin.svg" alt="bitcoin" /></td>
-                  <td><p>Bitcoin</p></td>
-                  <td>$ 30,000</td>
-                  <td>$ 1,000,000</td>
-                  <td>+ 0.52%</td>
-                  <td>$ 1,000,000,000</td>
-                  <td><button className="btn btn-dark">Comprar</button></td>
-                </tr>
-                <tr className="table-active">
-                  <td><img className="criptoCards" src="./assets/ethereum.svg" alt="ethereum" /></td>
-                  <td><p>Ethereum</p></td>
-                  <td>$ 30,000</td>
-                  <td>$ 1,000,000</td>
-                  <td>+ 0.52%</td>
-                  <td>$ 1,000,000,000</td>
-                  <td><button className="btn btn-dark">Comprar</button></td>
-                </tr>
-                <tr className="table-success">
-                  <td><img className="criptoCards" src="./assets/cardano.svg" alt="cardano" /></td>
-                  <td><p>Cardano</p></td>
-                  <td>$ 30,000</td>
-                  <td>$ 1,000,000</td>
-                  <td>+ 0.52%</td>
-                  <td>$ 1,000,000,000</td>
-                  <td><button className="btn btn-dark">Comprar</button></td>
-                </tr>
+                {filteredCoins.map((coin,index)=>(
+                  <CoinsRows coin={coin} key={index}/>
+                ))}
+        
               </tbody>
             </table>
             <PricesTableResponsive/>

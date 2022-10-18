@@ -1,6 +1,7 @@
 import './Home.css'
 import { MainCriptos } from '../MainCriptos/MainCriptos';
 import { RegisterHome } from './RegisterHome/RegisterHome';
+import { Link } from 'react-router-dom';
 export const Home = () => {
     return (
         <div>
@@ -11,7 +12,10 @@ export const Home = () => {
                         <p>
                             Tu sueldo ahora genera <br/>ganancias extras.<br/> Comprá fácil con tu<br/> celular.
                         </p>
-                        <button className="btn btn-light rounded-5">Crea tu cuenta</button>
+                        <Link to="/register">
+                            <button className="btn btn-light rounded-5">Crea tu cuenta</button>
+                        </Link>
+                        
                     </div>
                 </div>
             </div>

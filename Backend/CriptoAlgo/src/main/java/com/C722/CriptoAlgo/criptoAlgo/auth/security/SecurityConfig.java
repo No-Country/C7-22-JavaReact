@@ -50,7 +50,7 @@ public class SecurityConfig {
                 .authorizeRequests(auth -> auth
 
                         // Auth
-                        .antMatchers(HttpMethod.POST, "/auth/register").permitAll()// "/auth/login").permitAll()
+                        .antMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
 
                         //Wallet
                         .antMatchers(HttpMethod.GET, "/wallets/exchange/**").hasAuthority(RoleEnum.USER.getSimpleRoleName())
@@ -87,6 +87,7 @@ public class SecurityConfig {
         return (web) -> web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**", "/favicon.ico",
                 "/prices/**");
     }
+
 
     @Bean
     public PasswordEncoder PasswordEncoder() {

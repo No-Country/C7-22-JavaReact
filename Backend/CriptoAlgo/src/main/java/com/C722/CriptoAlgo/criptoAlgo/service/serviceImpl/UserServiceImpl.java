@@ -30,8 +30,6 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
 
-
-
     @Override
     public List<UserResponse> getAll() {
         List<UserEntity> users = userRepository.findAll();

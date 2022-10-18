@@ -1,17 +1,14 @@
 .headerContainer{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+
 }
 
-.imgLogoPlatform{
-    width: 80px;
-    height: 80px;
-    position: relative;
-    left:20px;
-}
+
 
 .buttonQuit{
     position: relative;
+    top:20px;
     right:20px;
 }
