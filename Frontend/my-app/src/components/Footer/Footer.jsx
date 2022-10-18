@@ -12,7 +12,7 @@ export const Footer = () => {
             <ul className="list ">
                 <Link to="/Ayuda" className="text-decoration-none"><li>Ayuda</li></Link> 
                 <Link to="/" className="text-decoration-none"><li>Home</li></Link> 
-                <Link to="/" className="text-decoration-none"><li>Precios</li></Link> 
+                <Link to="/precios" className="text-decoration-none"><li>Precios</li></Link> 
                <Link to="/TrabajaConNosotros" className="text-decoration-none"><li>Únete al equipo</li></Link> 
                <Link to="/Comisiones" className="text-decoration-none"><li>Comisiones</li></Link>
             </ul>

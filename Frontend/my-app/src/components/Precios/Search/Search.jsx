@@ -1,8 +1,11 @@
+export const Search = ({handleSearch}) => {
 
-export const Search = () => {
+    
+   
+
     return (
         <form className="d-flex searchBar" role="search">
-            <input className="form-control me-2" type="search" placeholder="Buscar una cripto" aria-label="Search" />
+            <input className="form-control me-2" type="search" placeholder="Buscar una cripto" aria-label="Search" onChange={handleSearch}/>
       </form>
     );
 }

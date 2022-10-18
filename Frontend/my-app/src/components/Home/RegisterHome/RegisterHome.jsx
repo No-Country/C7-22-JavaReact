@@ -15,7 +15,7 @@ export const RegisterHome = () => {
                             Crea tu cuenta
                             </h2>
                             <p>
-                            <Link to="/iniciarsesion">Regístrate</Link> desde el sitio web.
+                            <Link to="/register">Regístrate</Link> desde el sitio web.
                             </p>
                             
                         </div>

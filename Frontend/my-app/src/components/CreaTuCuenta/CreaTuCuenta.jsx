@@ -18,7 +18,7 @@ export const CreaTuCuenta = () => {
     const [confirmPasswordError, SetConfirmPasswordError] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const REGISTER_URL= '/register'
+    const REGISTER_URL= 'users/register'
 
     const loginService = () => {
       console.log(country)
@@ -99,8 +99,8 @@ export const CreaTuCuenta = () => {
       passwordConfirm();
 
       const data = {
-        firstname:firstname,
-        lastname:lastname,
+        firstName:firstname,
+        lastName:lastname,
         email:newUsername,
         password:newPassword
         
@@ -140,7 +140,7 @@ export const CreaTuCuenta = () => {
                 placeholder="Nombres"
                 value={firstname}
                 onChange={(e)=> setFirstname(e.target.value)}
-                className={usernameError?"inputRegisterError":"inputRegister"} />
+                className={firstnameError?"inputRegisterError":"inputRegister"} />
                 
                 
             <p className="instructions">Ingresa tus nombres</p>
@@ -151,11 +151,11 @@ export const CreaTuCuenta = () => {
           <div className="pt-2">
            <p className="titleInput">Apellidos</p>
            <input type="text" 
-                name="Lasttname" 
+                name="Lastname" 
                 placeholder="Apellidos"
                 value={lastname}
                 onChange={(e)=> setLastname(e.target.value)}
-                className={usernameError?"inputRegisterError":"inputRegister"} />
+                className={lastnameError?"inputRegisterError":"inputRegister"} />
                 
                 
             <p className="instructions">Ingresa tus apellidos</p>
