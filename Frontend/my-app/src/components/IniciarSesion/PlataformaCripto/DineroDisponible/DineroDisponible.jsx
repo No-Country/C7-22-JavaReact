@@ -14,7 +14,7 @@ export const DineroDisponible = () => {
             <div className="botonActionContainer">
                 <button className="btn btn-success actionButton">Mis criptomonedas</button>
                 <button className="btn btn-success actionButton">Comprar criptomonedas</button>
-                <button className="btn btn-success actionButton">Dollar cost average</button>
+
             </div>
         </div>
     );

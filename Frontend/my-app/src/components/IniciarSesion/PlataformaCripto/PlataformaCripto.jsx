@@ -3,22 +3,45 @@ import { Header } from './Header/Header';
 import { AsideProfile } from './AsideProfile/AsideProfile';
 import { DineroDisponible } from './DineroDisponible/DineroDisponible';
 import { MiPortafolio } from './MiPortafolio/MiPortafolio';
-import { useAuth } from '../../../hooks/useAuth';
 import axios from '../../../api/axios';
+import { useEffect} from 'react';
+import { useNavigate} from 'react-router-dom';
+import { useAuth } from '../../../hooks/useAuth';
+
 
 export const PlataformaCripto = () => {
-
     const {auth} = useAuth();
+    const navigate = useNavigate()
+
+    const token = auth.accessToken
+
+    useEffect(() => {
+        
+
+       if (!localStorage.getItem("token")) {
+        navigate("/iniciarsesion")
+       }
+    }, [navigate]);
+
+
+    
+
     const GETDATA_URL= 'users/register'
 
-        axios.post(GETDATA_URL,auth?.data?.accessToken)
-        .then(res => {
-            console.log(res)
-        })
-  
-        .catch(()=>{
-          console.log("No Server Response")
-        })
+    
+
+    axios.post(GETDATA_URL, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(res => {
+        console.log(res)
+    })
+
+    .catch(()=>{
+        console.log("No Server Response")
+    })
 
     return (
         <div >
@@ -26,7 +49,7 @@ export const PlataformaCripto = () => {
            <div className="platformContainer">
                 <AsideProfile/>
                 <div className="mainPlatform">
-                    <DineroDisponible/>
+                    <DineroDisponible />
                     <MiPortafolio/>
                 </div>
            </div>

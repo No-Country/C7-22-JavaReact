@@ -1,13 +1,20 @@
 import './MiPortafolio.css'
+import { useContext } from 'react';
+import { CoinsContext } from '../../../../context/CoinsContext';
+
 export const MiPortafolio = () => {
+
+    const {coins} = useContext(CoinsContext)
+
+    const titles = ["", "Precio", "Unidades", "Valor" ]
+
     return (
         <div className="portfolioContainer">
             <div className="titlesPortfolio">
-                <div></div>
-                <div>Precio</div>
-                <div>Unidades</div>
-                <div>Promedio</div>
-                <div>Valor</div>
+                {titles.map((title)=>(
+                    <div>{title}</div>
+                  ))}
+                
             </div>
             <div className="criptosPortfolio">
                 <div className="d-flex align-items-center">
