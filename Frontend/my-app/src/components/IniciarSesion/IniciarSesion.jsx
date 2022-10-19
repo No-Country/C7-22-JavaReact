@@ -8,7 +8,7 @@ import axios from "../../api/axios";
 
 const LOGIN_URL = "/auth/login";
 export const IniciarSesion=()=> {
-  const {setAuth} = useAuth();
+  const {setAuth, auth} = useAuth();
  /* const userRef = useRef();
   const errRef =useRef();*/
 
