@@ -43,6 +43,11 @@ public class UserController {
 
     }
 
+    @GetMapping("/me")
+    public ResponseEntity<UserResponse> updateUser(@RequestHeader(name = "Authorization") String token) {
+        UserResponse update = userService.getUserinfo(token);
+        return ResponseEntity.ok().body(update);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id")@Valid @NotNull Long id) {
         userService.deleteById(id);

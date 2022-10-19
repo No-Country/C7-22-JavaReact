@@ -71,8 +71,8 @@ public class WalletServiceImpl implements WalletService {
     }
 
 
-   /* @Override
-    public WalletResponse exchangeFiatCrypto(WalletUpdateRequest request, String token, String fiat, String crypto) {
+  /*  @Override
+    public WalletResponse exchangeFiatCrypto(WalletUpdateRequest request, String token) {
         String userToken = jwtUtils.rebuildToken(token);
         WalletEntity entityDb = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get()).get();
         WalletEntity entity = new WalletEntity();

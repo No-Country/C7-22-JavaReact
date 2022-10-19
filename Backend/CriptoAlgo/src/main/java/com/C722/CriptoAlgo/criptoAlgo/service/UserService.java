@@ -19,4 +19,6 @@ public interface UserService {
      void deleteById(Long id);
 
     UserResponse updateBasicUser(UserUpdateRequest request, String token);
+
+    UserResponse getUserinfo(String token);
 }

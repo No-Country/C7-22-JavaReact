@@ -58,6 +58,13 @@ public class UserServiceImpl implements UserService {
         return userMapper.userEntityToResponse(entity);
     }
 
+    @Override
+    public UserResponse getUserinfo(String token) {
+        String userToken = rebuildToken(token);
+        UserEntity entity = userRepository.findByEmail( jwtUtils.extractUsername(userToken)).get();
+        return userMapper.userEntityToResponse(entity);
+    }
+
     public String rebuildToken(String token){
         String [] part = token.split(" ");
         String token2 = part[1];
