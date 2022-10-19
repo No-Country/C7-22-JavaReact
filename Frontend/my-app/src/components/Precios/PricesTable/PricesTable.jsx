@@ -53,7 +53,7 @@ export const PricesTable = () => {
         
               </tbody>
             </table>
-            <PricesTableResponsive/>
+            <PricesTableResponsive coins={coins}/>
           </div>
           
         </div>

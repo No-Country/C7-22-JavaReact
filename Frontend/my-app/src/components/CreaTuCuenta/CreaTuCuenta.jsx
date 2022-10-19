@@ -18,7 +18,7 @@ export const CreaTuCuenta = () => {
     const [confirmPasswordError, SetConfirmPasswordError] = useState(false);
     const [success, setSuccess] = useState(false);
 
-    const REGISTER_URL= 'users/register'
+    const REGISTER_URL= 'auth/register'
 
     const loginService = () => {
       console.log(country)

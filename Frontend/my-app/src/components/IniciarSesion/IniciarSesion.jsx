@@ -6,9 +6,9 @@ import { useAuth } from "../../hooks/useAuth";
 
 import axios from "../../api/axios";
 
-const LOGIN_URL = "/users/login";
+const LOGIN_URL = "/auth/login";
 export const IniciarSesion=()=> {
-  const {setAuth} = useAuth();
+  const {setAuth, auth} = useAuth();
  /* const userRef = useRef();
   const errRef =useRef();*/
 
@@ -55,7 +55,7 @@ export const IniciarSesion=()=> {
           setPassword("")
           const accessToken = res?.data?.token;
           console.log(accessToken)
-          setAuth({email,password,accessToken});
+          setAuth(accessToken);
           localStorage.setItem("token",res?.data?.token)
           navigate("/plataforma")
       })
