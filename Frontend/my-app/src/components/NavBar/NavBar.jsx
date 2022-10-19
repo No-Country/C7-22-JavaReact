@@ -1,8 +1,11 @@
 import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
+=======
 import { useAuth } from "../../hooks/useAuth";
 
+>>>>>>> rama_development
 export default function NavBar() {
 
   const {auth} = useAuth();
@@ -49,7 +52,7 @@ export default function NavBar() {
             </Link>
             <Link to="/iniciarsesion">
               <button className="buttonStyle" type="button">
-                Iniciar Sesión
+                Iniciar Sesión 
               </button>
             </Link>
             </>:<Link to="/plataforma"><button className="btn btn-success buttonPlatform">Ir a la plataforma</button></Link>}
