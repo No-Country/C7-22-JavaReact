@@ -6,18 +6,18 @@ export default function ConoceEquipo() {
       
       <div className="card mb-3 borderStyle" style={{ maxWidth: "540px" }}>
         <div className="row g-0">
-          <div className="col-md-4">
+          <div className="col-md-4 ">
             <img
-              src="/assets/mujerCompu.jpg"
-              className="img-fluid rounded-start"
-              alt="Mujer Trabajando"
+              src="/assets/Alexander.png"
+              className="img-fluid rounded-start "
+              alt="Ale es parte del equipo"
             />
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">Amy Louise Aasen</h5>
+              <h5 className="card-title">Alexander Castañeda </h5>
               <p className="card-text">
-              Head of Business Architectur
+              Frontend developer
               </p>
             </div>
           </div>
@@ -27,16 +27,16 @@ export default function ConoceEquipo() {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src="/assets/mujerCompu.jpg"
-              className="img-fluid rounded-start"
-              alt="Mujer Trabajando"
+              src="/assets/MicaelaAndres.png"
+              className="img-fluid rounded-start "
+              alt="Mica es parte del equipo"
             />
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">Amy Louise Aasen</h5>
+              <h5 className="card-title">Micaela Andrés</h5>
               <p className="card-text">
-              Head of Business Architectur
+              Frontend developer
               </p>
             </div>
           </div>
@@ -46,16 +46,16 @@ export default function ConoceEquipo() {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src="/assets/mujerCompu.jpg"
-              className="img-fluid rounded-start"
-              alt="Mujer Trabajando"
+              src="/assets/LarryAguileraa.png"
+              className="img-fluid rounded-start "
+              alt="Larry es parte del equipo"
             />
           </div>
           <div className="col-md-8">
             <div className="card-body">
-              <h5 className="card-title">Amy Louise Aasen</h5>
+              <h5 className="card-title">Larry Aguilera</h5>
               <p className="card-text">
-              Head of Business Architectur
+              Backend Java Developer
               </p>
             </div>
           </div>

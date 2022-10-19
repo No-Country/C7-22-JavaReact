@@ -1,7 +1,6 @@
 import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-
 export default function NavBar() {
   return (
     <header>
@@ -30,7 +29,7 @@ export default function NavBar() {
               <Link to="/" className=" active liLinkNav">
                 <li> HOME </li>
               </Link>
-              <Link to="/" className=" active liLinkNav">
+              <Link to="/precios" className=" active liLinkNav">
                 <li> PRECIOS </li>
               </Link>
               <Link to="/ayuda" className=" active liLinkNav">
@@ -44,7 +43,7 @@ export default function NavBar() {
             </Link>
             <Link to="/">
               <button className="buttonStyle" type="button">
-                Iniciar Sesión
+                Iniciar Sesión 
               </button>
             </Link>
           </div>
