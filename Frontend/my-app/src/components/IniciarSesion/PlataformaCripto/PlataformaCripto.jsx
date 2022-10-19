@@ -27,20 +27,6 @@ export const PlataformaCripto = () => {
 
 
     useEffect(() => {
-        const GETDATA_URL= 'users/me'
-        axios.get(GETDATA_URL, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        .then(res => {
-            console.log(res)
-            setUser(res?.data)
-    
-
-    
-
-    useEffect(() => {
 
         const GETDATA_URL= 'users/me'
 
@@ -61,12 +47,7 @@ export const PlataformaCripto = () => {
     
     }, [token]);
 
-   
-    
-        .catch(()=>{
-            console.log("No Server Response")
-        })
-    }, [token]);
+        
 
     useEffect(() => {
 
@@ -105,32 +86,3 @@ export const PlataformaCripto = () => {
         </div>
     );
 }
-
-/*"usdBalance": 0.0,
-        "argpesosBalance": 0.0,
-        "usdtBalance": 0.0,
-        "usdcBalance": 0.0,
-        "busdBalance": 0.0,
-        "btcBalance": 0.0,
-        "ethBalance": 0.0,
-        "bnbalance": 0.0,
-        "adaBalance": 0.0 
-        bitcoin,ethereum,binancecoin,cardano,theter,usdcoin,binanceusd*/
-
-/*{
-    "ownerId": 1,
-    "usdBalance": 0.0,
-    "usdtBalance": 0.0,
-    "usdcBalance": 0.0,
-    "busdBalance": 0.0,
-    "btcBalance": 0.0,
-    "ethBalance": 0.0,
-    "bnbBalance": 0.0,
-    "adaBalance": 0.0
-} */
-
-/*{
-    "firstName": "Karem",
-    "lastName": "Chaparro",
-    "email": "k@gmail.com"
-} */
