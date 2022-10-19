@@ -1,7 +1,7 @@
 import './AsideProfile.css'
 import { Link } from 'react-router-dom';
  
-export const AsideProfile = (user) => {
+export const AsideProfile = ({user}) => {
     return (
         <aside className="ps-5">
             <div className="infoAsideProfile">

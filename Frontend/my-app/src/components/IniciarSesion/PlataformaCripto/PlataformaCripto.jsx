@@ -12,7 +12,7 @@ import { useAuth } from '../../../hooks/useAuth';
 export const PlataformaCripto = () => {
     const {auth} = useAuth();
     const [user, setUser] = useState("");
-
+    const [wallet, setWallet] = useState("");
     const navigate = useNavigate()
 
     const token = auth
@@ -26,34 +26,52 @@ export const PlataformaCripto = () => {
     }, [navigate]);
 
 
+    useEffect(() => {
+        const GETDATA_URL= 'users/me'
+        axios.get(GETDATA_URL, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            console.log(res)
+            setUser(res?.data)
     
-
-    const GETDATA_URL= 'users/me'
-
+        })
     
+        .catch(()=>{
+            console.log("No Server Response")
+        })
+    }, [token]);
 
-    axios.get(GETDATA_URL, {
-        headers: {
-            Authorization: `Bearer ${token}`
-        }
-    })
-    .then(res => {
-        console.log(res)
-        setUser(res?.data)
+    useEffect(() => {
 
-    })
+        const GETWALLET_URL= 'wallets/me'
 
-    .catch(()=>{
-        console.log("No Server Response")
-    })
+        axios.get(GETWALLET_URL, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(res => {
+            console.log(res)
+            setWallet(res?.data)
+    
+        })
+    
+        .catch(()=>{
+            console.log("No Server Response")
+        })
+    }, [token]);
+
 
     return (
         <div >
            <Header/>
            <div className="platformContainer">
-                <AsideProfile user={user}/>
+                <AsideProfile user = {user}/>
                 <div className="mainPlatform">
-                    <DineroDisponible />
+                    <DineroDisponible wallet = {wallet} />
                     <MiPortafolio/>
                 </div>
            </div>
