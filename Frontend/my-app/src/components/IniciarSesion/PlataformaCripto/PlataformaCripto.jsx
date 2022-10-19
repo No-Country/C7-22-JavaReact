@@ -13,7 +13,7 @@ export const PlataformaCripto = () => {
     const {auth} = useAuth();
     const navigate = useNavigate()
 
-    const token = auth.accessToken
+    const token = auth
 
     useEffect(() => {
         
@@ -26,17 +26,17 @@ export const PlataformaCripto = () => {
 
     
 
-    const GETDATA_URL= 'users/register'
+    const GETDATA_URL= 'users/me'
 
     
 
-    axios.post(GETDATA_URL, {
+    axios.get(GETDATA_URL, {
         headers: {
             Authorization: `Bearer ${token}`
         }
     })
     .then(res => {
-        console.log(res)
+        console.log("hola",res)
     })
 
     .catch(()=>{
