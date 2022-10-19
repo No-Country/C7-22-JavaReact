@@ -1,10 +1,10 @@
 import './DineroDisponible.css'
-export const DineroDisponible = () => {
+export const DineroDisponible = ({wallet}) => {
     return (
         <div>
             <div className="infoDineroDisponible">
                 <h2>Dinero disponible</h2>
-                <p>$ 0.00</p>
+                <p>$ {wallet.usdBalance}</p>
                 <div>
                     <button className="btn btn-dark me-2 fundingButton">Ingresar dinero</button>
                     <button className="btn btn-dark fundingButton">Retirar dinero</button>
