@@ -49,7 +49,7 @@ export default function NavBar() {
             </Link>
             <Link to="/iniciarsesion">
               <button className="buttonStyle" type="button">
-                Iniciar Sesión
+                Iniciar Sesión 
               </button>
             </Link>
             </>:<Link to="/plataforma"><button className="btn btn-success buttonPlatform">Ir a la plataforma</button></Link>}

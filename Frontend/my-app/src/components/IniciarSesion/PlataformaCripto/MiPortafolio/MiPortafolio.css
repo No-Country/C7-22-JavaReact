@@ -23,6 +23,10 @@
 
 }
 
+.criptosValor{
+    padding-bottom:20px;
+}
+
 .criptosPortfolio div {
     width: 150px;
     height:40px;
