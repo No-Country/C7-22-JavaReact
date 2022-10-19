@@ -52,12 +52,11 @@ public class UserEntity {
     private String password;
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "wallet_id", referencedColumnName = "id")
-    /*@JoinTable(name = "wallets_users",
+    @JoinTable(name = "wallets_users",
             joinColumns =
                     { @JoinColumn(name = "user_id", referencedColumnName = "id") },
             inverseJoinColumns =
-                    { @JoinColumn(name = "wallets_id", referencedColumnName = "id") })*/
+                    { @JoinColumn(name = "wallets_id", referencedColumnName = "id") })
     private WalletEntity wallet;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

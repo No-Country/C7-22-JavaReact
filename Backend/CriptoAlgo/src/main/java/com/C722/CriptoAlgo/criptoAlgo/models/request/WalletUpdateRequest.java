@@ -25,7 +25,7 @@ public class WalletUpdateRequest {
 
         private String ethBalance;
 
-        private String bnBalance;
+        private String bnbBalance;
 
         private String ADABalance;
 

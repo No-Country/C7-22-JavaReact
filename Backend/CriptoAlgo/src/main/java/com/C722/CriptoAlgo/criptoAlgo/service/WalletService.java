@@ -24,5 +24,5 @@ public interface WalletService {
 
    WalletResponse getWalletBalance(String token);
 
-   //WalletResponse exchangeFiatCrypto(WalletUpdateRequest request, String token);
+   WalletResponse exchangeUsdCrypto(WalletUpdateRequest request, String token, String crypto);
 }

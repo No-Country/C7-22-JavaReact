@@ -18,16 +18,16 @@ public class WalletMapper {
             entity.setAdaBalance(Double.parseDouble(request.getADABalance()));
         }
         //BNB
-        if (request.getBnBalance() != null && !request.getBnBalance().isEmpty() && !request.getBnBalance().isBlank()) {
-            entity.setBnbBalance(Double.parseDouble(request.getBnBalance()));
+        if (request.getBnbBalance() != null && !request.getBnbBalance().isEmpty() && !request.getBnbBalance().isBlank()) {
+            entity.setBnbBalance(Double.parseDouble(request.getBnbBalance()));
         }
         //ArgPesos
         /*if (request.getArgpesosBalance() != null && !request.getArgpesosBalance().isEmpty() && !request.getArgpesosBalance().isBlank()) {
             entity.setArgPesosBalance(Double.parseDouble(request.getArgpesosBalance()));
         }*/
         //BTC
-        if (request.getArgpesosBalance() != null && !request.getArgpesosBalance().isEmpty() && !request.getArgpesosBalance().isBlank()) {
-            entity.setArgPesosBalance(Double.parseDouble(request.getArgpesosBalance()));
+        if (request.getBtcBalance() != null && !request.getBtcBalance().isEmpty() && !request.getBtcBalance().isBlank()) {
+            entity.setBtcBalance(Double.parseDouble(request.getBtcBalance()));
         }
         //BUSD
         if (request.getBusdBalance() != null && !request.getBusdBalance().isEmpty() && !request.getBusdBalance().isBlank()) {
@@ -75,7 +75,7 @@ public class WalletMapper {
     public WalletResponse entityToResponse(WalletEntity entity) {
         WalletResponse response = new WalletResponse();
 
-        response.setOwnerId(entity.getOwner().getId());
+        //response.setOwnerId(entity.getOwner().getId());
         response.setAdaBalance(entity.getAdaBalance());
         response.setBnbBalance(entity.getBnbBalance());
         //response.setArgpesosBalance(entity.getArgPesosBalance());
