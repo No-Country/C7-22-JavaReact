@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import './IniciarSesion.css'
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import { useAuth } from "../../hooks/useAuth";
 
 import axios from "../../api/axios";
@@ -19,8 +19,7 @@ export const IniciarSesion=()=> {
   /*const [success, setSuccess] = useState(false);*/
 
   const navigate = useNavigate()
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/plataforma"
+
 
   /*const loginService = () => {
     console.log(username)
@@ -58,8 +57,7 @@ export const IniciarSesion=()=> {
           console.log(accessToken)
           setAuth({email,password,accessToken});
           localStorage.setItem("token",res?.data?.token)
-          //navigate("/plataforma")
-          navigate(from, {replace: true})
+          navigate("/plataforma")
       })
 
       .catch(()=>{

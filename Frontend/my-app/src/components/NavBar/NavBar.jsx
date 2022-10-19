@@ -1,8 +1,12 @@
 import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 export default function NavBar() {
+
+  const {auth} = useAuth();
+
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light navStyle">
@@ -37,6 +41,7 @@ export default function NavBar() {
                 <li> AYUDA </li>
               </Link>
             </ul>
+            {!auth.length?<>
             <Link to="/register">
               <button className="buttonStyle" type="button">
                 Creá tu cuenta
@@ -47,6 +52,7 @@ export default function NavBar() {
                 Iniciar Sesión
               </button>
             </Link>
+            </>:<Link to="/plataforma"><button className="btn btn-success buttonPlatform">Ir a la plataforma</button></Link>}
           </div>
         </div>
       </nav>
