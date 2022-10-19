@@ -1,5 +1,7 @@
 .portfolioContainer{
     padding-top:90px;
+    position: relative;
+    right:80px;
 }
 
 .titlesPortfolio {
@@ -16,6 +18,7 @@
 
 .criptosPortfolio{
     display: flex;
+    padding-bottom:20px;
    
 
 }

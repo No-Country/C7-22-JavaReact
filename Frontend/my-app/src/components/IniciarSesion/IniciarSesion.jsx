@@ -56,7 +56,6 @@ export const IniciarSesion=()=> {
           const accessToken = res?.data?.token;
           console.log(accessToken)
           setAuth(accessToken);
-          console.log(auth)
           localStorage.setItem("token",res?.data?.token)
           navigate("/plataforma")
       })

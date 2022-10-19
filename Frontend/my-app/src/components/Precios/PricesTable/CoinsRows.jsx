@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const CoinsRows = ({coin,index}) => {
     return (
@@ -12,7 +13,11 @@ export const CoinsRows = ({coin,index}) => {
             <td>$ {coin.current_price}</td>
             <td className={coin.price_change_percentage_24h>0?"text-success":"text-danger"}>{coin.price_change_percentage_24h} %</td>
             <td>$ {coin.total_volume}</td>
-            <td><button className="btn btn-dark">Comprar</button></td>
+            <td> 
+                <Link to="/plataforma">
+                    <button className="btn btn-dark">Comprar</button>
+                </Link>
+            </td>
         </tr>
     );
 }

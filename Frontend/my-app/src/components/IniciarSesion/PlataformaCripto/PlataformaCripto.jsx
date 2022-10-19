@@ -4,13 +4,15 @@ import { AsideProfile } from './AsideProfile/AsideProfile';
 import { DineroDisponible } from './DineroDisponible/DineroDisponible';
 import { MiPortafolio } from './MiPortafolio/MiPortafolio';
 import axios from '../../../api/axios';
-import { useEffect} from 'react';
+import { useEffect, useState} from 'react';
 import { useNavigate} from 'react-router-dom';
 import { useAuth } from '../../../hooks/useAuth';
 
 
 export const PlataformaCripto = () => {
     const {auth} = useAuth();
+    const [user, setUser] = useState("");
+
     const navigate = useNavigate()
 
     const token = auth
@@ -36,7 +38,9 @@ export const PlataformaCripto = () => {
         }
     })
     .then(res => {
-        console.log("hola",res)
+        console.log(res)
+        setUser(res?.data)
+
     })
 
     .catch(()=>{
@@ -47,7 +51,7 @@ export const PlataformaCripto = () => {
         <div >
            <Header/>
            <div className="platformContainer">
-                <AsideProfile/>
+                <AsideProfile user={user}/>
                 <div className="mainPlatform">
                     <DineroDisponible />
                     <MiPortafolio/>
@@ -68,3 +72,21 @@ export const PlataformaCripto = () => {
         "bnbalance": 0.0,
         "adaBalance": 0.0 
         bitcoin,ethereum,binancecoin,cardano,theter,usdcoin,binanceusd*/
+
+/*{
+    "ownerId": 1,
+    "usdBalance": 0.0,
+    "usdtBalance": 0.0,
+    "usdcBalance": 0.0,
+    "busdBalance": 0.0,
+    "btcBalance": 0.0,
+    "ethBalance": 0.0,
+    "bnbBalance": 0.0,
+    "adaBalance": 0.0
+} */
+
+/*{
+    "firstName": "Karem",
+    "lastName": "Chaparro",
+    "email": "k@gmail.com"
+} */
