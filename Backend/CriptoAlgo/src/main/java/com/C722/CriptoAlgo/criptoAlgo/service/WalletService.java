@@ -18,10 +18,11 @@ public interface WalletService {
 
    WalletResponse getById(Long id);
 
-
    void deleteById(Long id);
 
    WalletResponse transfer(WalletUpdateRequest request, String token);
+
+   WalletResponse getWalletBalance(String token);
 
    //WalletResponse exchangeFiatCrypto(WalletUpdateRequest request, String token);
 }

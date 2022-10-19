@@ -3,11 +3,6 @@ package com.C722.CriptoAlgo.criptoAlgo.models.response;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 @Getter
 @Setter
 public class WalletResponse {
@@ -16,7 +11,7 @@ public class WalletResponse {
 
     private Double usdBalance;
 
-    private Double argpesosBalance;
+   // private Double argpesosBalance;
 
     private Double usdtBalance;
 
@@ -28,7 +23,7 @@ public class WalletResponse {
 
     private Double ethBalance;
 
-    private Double bnbalance;
+    private Double bnbBalance;
 
     private Double adaBalance;
 }

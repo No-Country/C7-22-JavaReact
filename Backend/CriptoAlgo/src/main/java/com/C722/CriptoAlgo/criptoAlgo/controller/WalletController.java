@@ -39,6 +39,11 @@ public class WalletController {
         return ResponseEntity.ok().body(update);
 
     }
+    @GetMapping("/me")
+    public ResponseEntity<WalletResponse> getWalletBalance(@RequestHeader(name = "Authorization") String token) {
+        WalletResponse response = walletService.getWalletBalance(token);
+        return ResponseEntity.ok().body(response);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable("id")@Valid @NotNull Long id) {

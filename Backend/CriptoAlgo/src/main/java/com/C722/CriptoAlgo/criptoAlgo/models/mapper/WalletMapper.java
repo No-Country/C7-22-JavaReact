@@ -3,7 +3,6 @@ package com.C722.CriptoAlgo.criptoAlgo.models.mapper;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.UserEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.entity.WalletEntity;
 import com.C722.CriptoAlgo.criptoAlgo.models.request.WalletUpdateRequest;
-import com.C722.CriptoAlgo.criptoAlgo.models.response.UserResponse;
 import com.C722.CriptoAlgo.criptoAlgo.models.response.WalletResponse;
 import org.springframework.stereotype.Component;
 
@@ -23,9 +22,9 @@ public class WalletMapper {
             entity.setBnbBalance(Double.parseDouble(request.getBnBalance()));
         }
         //ArgPesos
-        if (request.getArgpesosBalance() != null && !request.getArgpesosBalance().isEmpty() && !request.getArgpesosBalance().isBlank()) {
+        /*if (request.getArgpesosBalance() != null && !request.getArgpesosBalance().isEmpty() && !request.getArgpesosBalance().isBlank()) {
             entity.setArgPesosBalance(Double.parseDouble(request.getArgpesosBalance()));
-        }
+        }*/
         //BTC
         if (request.getArgpesosBalance() != null && !request.getArgpesosBalance().isEmpty() && !request.getArgpesosBalance().isBlank()) {
             entity.setArgPesosBalance(Double.parseDouble(request.getArgpesosBalance()));
@@ -61,7 +60,7 @@ public class WalletMapper {
         WalletEntity entity = new WalletEntity();
         entity.setAdaBalance(0d);
         entity.setBnbBalance(0d);
-        entity.setArgPesosBalance(0d);
+        //entity.setArgPesosBalance(0d);
         entity.setBtcBalance(0d);
         entity.setBusdBalance(0d);
         entity.setUsdtBalance(0d);
@@ -78,8 +77,8 @@ public class WalletMapper {
 
         response.setOwnerId(entity.getOwner().getId());
         response.setAdaBalance(entity.getAdaBalance());
-        response.setBnbalance(entity.getBnbBalance());
-        response.setArgpesosBalance(entity.getArgPesosBalance());
+        response.setBnbBalance(entity.getBnbBalance());
+        //response.setArgpesosBalance(entity.getArgPesosBalance());
         response.setBtcBalance(entity.getBtcBalance());
         response.setBusdBalance(entity.getBusdBalance());
         response.setUsdtBalance(entity.getUsdtBalance());

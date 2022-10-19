@@ -47,7 +47,6 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public WalletResponse update(WalletUpdateRequest request, String token) {
         String userToken = jwtUtils.rebuildToken(token);
-        //WalletEntity entity = userRepository.findWalletByEmail(jwtUtils.extractUsername(userToken)).get();
         WalletEntity entity = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get()).get();
         walletMapper.updateRequestToEntity(request, entity);
         walletRepository.save(entity);
@@ -68,6 +67,13 @@ public class WalletServiceImpl implements WalletService {
     @Override
     public WalletResponse transfer(WalletUpdateRequest request, String token) {
         return null;
+    }
+
+    @Override
+    public WalletResponse getWalletBalance(String token) {
+        String userToken = jwtUtils.rebuildToken(token);
+        WalletEntity entity = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get()).get();
+        return walletMapper.entityToResponse(entity);
     }
 
 
@@ -166,7 +172,7 @@ public class WalletServiceImpl implements WalletService {
                 entityDb.setAdaBalance(entityDb.getAdaBalance() + balance);
             }
         }//usd-btc
-        if (fiat.equals("usd") && crypto.equals("btc")) {
+        if (fiat.equals("usd") && crypto.equals("bitcoin")) {
             if (entity.getUsdBalance() > entityDb.getUsdBalance()) {
                 throw new InsufficientAvailableBalanceException();
             } else {
