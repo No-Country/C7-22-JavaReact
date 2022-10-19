@@ -1,0 +1,30 @@
+.infoDineroDisponible{
+    border: 1px solid black;
+    padding: 15px 15px;
+    width:350px;
+    position: relative;
+    right:130px;
+}
+
+.infoDineroDisponible h2{
+    font-size: 15px;
+    font-weight: 700;
+
+}
+
+.botonActionContainer{
+    padding-top: 50px;
+    position: relative;
+    right:130px;
+}
+
+.fundingButton{
+    text-transform: none;
+    width:155px;
+}
+
+.actionButton{
+    text-transform: none;
+    margin-right: 40px;
+    width:200px
+}

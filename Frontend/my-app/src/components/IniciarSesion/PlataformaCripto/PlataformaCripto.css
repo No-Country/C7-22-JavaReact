@@ -1,0 +1,13 @@
+.platformContainer{
+    display: flex;
+    padding: 100px 0px;
+    width: 100%;
+    
+}
+
+.mainPlatform{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

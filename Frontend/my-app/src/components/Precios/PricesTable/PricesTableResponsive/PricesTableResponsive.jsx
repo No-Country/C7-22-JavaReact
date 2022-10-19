@@ -1,8 +1,11 @@
 import './PricesTableResponsive.css'
-export const PricesTableResponsive = () => {
+import { Link } from 'react-router-dom';
+export const PricesTableResponsive = ({coins}) => {
     return (
         <div className="accordion pricesTableResponsive">
-        <div className="accordion-item">
+
+        {coins.map((coin,index)=>(
+            <div className="accordion-item" key={index}>
             <div className="accordion-header" id="headingOne">
             <button
                 className="accordion-button buttonAccordion"
@@ -11,32 +14,32 @@ export const PricesTableResponsive = () => {
                 data-bs-target="#collapseOne"
                 aria-expanded="true"
                 aria-controls="collapseOne"
-              >
+            >
                 <div className="d-flex justify-content-between">
                     <div className="titlePricesResponsive">
-                        <img className="criptoCards" src="./assets/bitcoin.svg" alt="bitcoin" />
-                        <h2>Bitcoin</h2>
+                        <img className="criptoCards" src={coin.image} alt="bitcoin" />
+                        <h2>{coin.name}</h2>
                     </div>
                     <div className="infoPricesResponsive">
-                        <p>19,003 USD</p>
-                        <p>+ 0.52%</p>
+                        <p>{coin.current_price} USD</p>
+                        <p className={coin.price_change_percentage_24h>0?"text-success":"text-danger"}>{coin.price_change_percentage_24h} %</p>
                     </div>
                 </div>
-              </button>
+            </button>
             </div>
             <div
-              id="collapseOne"
-              className="accordion-collapse collapse show"
-              aria-labelledby="headingOne"
-              data-bs-parent="#accordionExample"
+            id="collapseOne"
+            className="accordion-collapse collapse show"
+            aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample"
             >
-              <div className="accordion-body">
+            <div className="accordion-body">
                 <div className="d-flex justify-content-between">
                     <p>
                         Volumen:
                     </p>
                     <p>
-                        $ 1,000,000
+                        $ {coin.total_volume}
                     </p>
                 </div>
                 <div className="d-flex justify-content-between">
@@ -44,14 +47,19 @@ export const PricesTableResponsive = () => {
                         Market cap:
                     </p>
                     <p>
-                        $ 1,000,000,000
+                        $ {coin.market_cap}
                     </p>
                 </div>
-                <button className="btn btn-dark">Comprar</button>
-              </div>
+                <Link to="/plataforma">
+                    <button className="btn btn-dark">Comprar</button>
+                </Link>
+                
             </div>
-          </div>
-          </div>
+            </div>
+            </div>
+        ))}
+       
+        </div>
     );
 }
 

@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom';
 
 export const RegisterHome = () => {
     return (
-        <div class="container-fluid">
-            <div class="row registerContainer">
-                <div class="col-md-6 firstContent">
+        <div className="container-fluid">
+            <div className="row registerContainer">
+                <div className="col-md-6 firstContent">
                    <p>Hacemos de las cripto <br/>algo sencillo.<br/>Regístrate y comenzá<br/>en minutos.</p> 
                 </div>
-                <div class="col-md-6">
-                    <div class="row">
-                        <div class="col-md-12 secondContent pb-4">
+                <div className="col-md-6">
+                    <div className="row">
+                        <div className="col-md-12 secondContent pb-4">
                             <h2>
                             Crea tu cuenta
                             </h2>
                             <p>
-                            <Link to="/">Regístrate</Link> desde el sitio web.
+                            <Link to="/register">Regístrate</Link> desde el sitio web.
                             </p>
                             
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 secondContent pb-4">
+                    <div className="row">
+                        <div className="col-md-12 secondContent pb-4">
                         <h2>
                             Deposita
                             </h2>
@@ -30,8 +30,8 @@ export const RegisterHome = () => {
                             </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 secondContent">
+                    <div className="row">
+                        <div className="col-md-12 secondContent">
                         <h2>
                             Guarda, compra y vende
                             </h2>

@@ -55,7 +55,9 @@
     letter-spacing: 0.08em;
 }
 
-
-
+.buttonPlatform{
+    position: relative;
+    right:10px;
+}
 
 
