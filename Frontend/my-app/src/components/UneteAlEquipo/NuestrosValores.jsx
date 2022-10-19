@@ -7,9 +7,9 @@ export default function NuestrosValores() {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src="/assets/mujerCompu.jpg"
+              src="/assets/colaborar.png"
               className="img-fluid rounded-start"
-              alt="Mujer Trabajando"
+              alt="img de Colaboracion"
             />
           </div>
           <div className="col-md-8">
@@ -40,9 +40,9 @@ export default function NuestrosValores() {
           </div>
           <div className="col-md-4">
             <img
-              src="/assets/mujerCompu.jpg"
+              src="/assets/centradousuario.png"
               className="img-fluid rounded-end"
-              alt="Mujer Trabajando"
+              alt="Centrada en el usuario"
             />
           </div>
         </div>
@@ -51,9 +51,9 @@ export default function NuestrosValores() {
         <div className="row g-0">
           <div className="col-md-4">
             <img
-              src="/assets/mujerCompu.jpg"
+              src="/assets/fortaleza.png"
               className="img-fluid rounded-start"
-              alt="Mujer Trabajando"
+              alt="fortaleza"
             />
           </div>
           <div className="col-md-8">
@@ -83,9 +83,9 @@ export default function NuestrosValores() {
           </div>
           <div className="col-md-4">
             <img
-              src="/assets/mujerCompu.jpg"
+              src="/assets/libertad.png"
               className="img-fluid rounded-start"
-              alt="Mujer Trabajando"
+              alt="Libertad"
             />
           </div>
           
