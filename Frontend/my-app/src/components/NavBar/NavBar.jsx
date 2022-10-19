@@ -1,11 +1,8 @@
 import React from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-=======
 import { useAuth } from "../../hooks/useAuth";
 
->>>>>>> rama_development
 export default function NavBar() {
 
   const {auth} = useAuth();
