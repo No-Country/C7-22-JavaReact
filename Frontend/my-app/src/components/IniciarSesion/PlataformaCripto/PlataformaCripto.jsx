@@ -57,7 +57,7 @@ export const PlataformaCripto = () => {
 
     useEffect(() => {
 
-        const GETWALLET_URL= 'wallet/me'
+        const GETWALLET_URL= 'wallets/me'
 
         axios.get(GETWALLET_URL, {
             headers: {
