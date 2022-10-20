@@ -1,8 +1,10 @@
 import './MiPortafolio.css'
 import { useContext } from 'react';
 import { CoinsContext } from '../../../../context/CoinsContext';
-
+import { Link} from 'react-router-dom';
 export const MiPortafolio = ({wallet}) => {
+
+   
 
     const {coins} = useContext(CoinsContext)
     const criptos = [wallet.btcBalance,
@@ -13,17 +15,14 @@ export const MiPortafolio = ({wallet}) => {
         wallet.busdBalance, 
         wallet.adaBalance]
     
-    const titles = ["", "Precio" ]
-
- 
+    
     
     return (
         <div className="d-flex">
             <div className="portfolioContainer">
                 <div className="titlesPortfolio">
-                    {titles.map((title)=>(
-                        <div>{title}</div>
-                    ))}
+                    <div> </div>
+                    <div>Precio</div>
                     
                 </div>
                             
@@ -34,7 +33,9 @@ export const MiPortafolio = ({wallet}) => {
                             <p>{coin.name}</p>
                         </div>
                         <div>{coin.current_price}</div>
-                        
+                        <Link to={`/plataforma/calculadora/${coin.name}`}>
+                            <button className="btn btn-dark botonComprar">Comprar</button>
+                        </Link>
                         
                     </div>
                 ))}
@@ -42,7 +43,7 @@ export const MiPortafolio = ({wallet}) => {
             
             
             </div>
-            <div className="portfolioContainer">
+            <div className="portfolioContainerDos">
                 <div className="titlesPortfolio">
                     <div>Unidades</div>
                 </div>
@@ -56,36 +57,37 @@ export const MiPortafolio = ({wallet}) => {
                 </>))}
             
             </div>
-            <div className="portfolioContainer">
-            <div className="titlesPortfolio">
-                <div>Valor</div>
-            </div>
+                <div className="portfolioContainerDos">
+                <div className="titlesPortfolio">
+                    <div>Valor</div>
+                </div>
 
-                <div className="criptosPortfolio">
-                    <div>{criptos[1]*coins[0].current_price}</div>
-                </div>
-                <div className="criptosPortfolio">
-                    <div>{criptos[2]*coins[1].current_price}</div>
-                </div>
-                <div className="criptosPortfolio">
-                    <div>{criptos[3]*coins[2].current_price}</div>
-                </div>
-                <div className="criptosPortfolio">
-                    <div>{criptos[4]*coins[3].current_price}</div>
-                </div>
-                <div className="criptosPortfolio">
-                    <div>{criptos[5]*coins[4].current_price}</div>
-                </div>
-                <div className="criptosPortfolio">
-                    <div>{criptos[6]*coins[5].current_price}</div>
-                </div>
-                <div className="criptosPortfolio">
-                    <div>{criptos[7]*coins[6].current_price}</div>
-                </div>
-                    
+                    <div className="criptosPortfolio">
+                        <div>2</div>
+                        {/*<div>{(criptos[0])*coins[0].current_price}</div>*/}
+                    </div>
+                    <div className="criptosPortfolio">
+                    <div>2</div> {/*<div>{(criptos[1])*coins[1].current_price}</div>*/}
+                    </div>
+                    <div className="criptosPortfolio">
+                    <div>2</div>{/*<div>{(criptos[2])*coins[2].current_price}</div>*/}
+                    </div>
+                    <div className="criptosPortfolio">
+                    <div>2</div>{/*<div>{(criptos[3])*coins[3].current_price}</div>*/}
+                    </div>
+                    <div className="criptosPortfolio">
+                    <div>2</div> {/*<div>{(criptos[4])*coins[4].current_price}</div>*/}
+                    </div>
+                    <div className="criptosPortfolio">
+                    <div>2</div>{/*<div>{(criptos[5])*coins[5].current_price}</div>*/}
+                    </div>
+                    <div className="criptosPortfolio">
+                    <div>2</div> {/*<div>{(criptos[6])*coins[6].current_price}</div>*/}
+                    </div>
+                        
                     
                
-        </div>
+            </div>
 
         </div>
         

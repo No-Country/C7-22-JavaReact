@@ -1,4 +1,5 @@
 import './DineroDisponible.css'
+import { Link } from 'react-router-dom';
 export const DineroDisponible = ({wallet}) => {
     return (
         <div>
@@ -6,7 +7,10 @@ export const DineroDisponible = ({wallet}) => {
                 <h2>Dinero disponible</h2>
                 <p>$ {wallet.usdBalance}</p>
                 <div>
-                    <button className="btn btn-dark me-2 fundingButton">Ingresar dinero</button>
+                    <Link to="/plataforma/ingresodinero">
+                        <button className="btn btn-dark me-2 fundingButton">Ingresar dinero</button>
+                    </Link>
+                   
                     <button className="btn btn-dark fundingButton">Retirar dinero</button>
                 </div>
             </div>
