@@ -11,7 +11,9 @@ export const DineroDisponible = ({wallet}) => {
                         <button className="btn btn-dark me-2 fundingButton">Ingresar dinero</button>
                     </Link>
                    
-                    <button className="btn btn-dark fundingButton">Retirar dinero</button>
+                    <Link to="/plataforma/retirodinero">
+                        <button className="btn btn-dark fundingButton">Retirar dinero</button>
+                    </Link>
                 </div>
             </div>
             

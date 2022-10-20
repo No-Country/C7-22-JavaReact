@@ -51,7 +51,7 @@ public class WalletController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PutMapping("/exchange/{crypto}")
+    @PatchMapping("/exchange/{crypto}")
     public ResponseEntity<WalletResponse> exchangeFiatCrypto(@RequestHeader(name= "Authorization") String token,
                                                    @RequestBody @Valid WalletUpdateRequest request,
                                                              @PathVariable("crypto")@Valid @NotNull String crypto){

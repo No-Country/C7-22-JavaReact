@@ -68,6 +68,7 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
+    @Transactional
     public WalletResponse addUsdBalance(WalletUpdateRequest request, String token) {
         String userToken = jwtUtils.rebuildToken(token);
         Optional <WalletEntity> entityDb = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get());;
@@ -79,6 +80,7 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
+    @Transactional
     public WalletResponse withdrawUsdBalance(WalletUpdateRequest request, String token) {
         String userToken = jwtUtils.rebuildToken(token);
         Optional <WalletEntity> entityDb = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get());;

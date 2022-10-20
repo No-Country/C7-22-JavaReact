@@ -33,7 +33,7 @@ export const MiPortafolio = ({wallet}) => {
                             <p>{coin.name}</p>
                         </div>
                         <div>{coin.current_price}</div>
-                        <Link to={`/plataforma/calculadora/${coin.name}`}>
+                        <Link to={`/plataforma/calculadora/${coin.id}`}>
                             <button className="btn btn-dark botonComprar">Comprar</button>
                         </Link>
                         

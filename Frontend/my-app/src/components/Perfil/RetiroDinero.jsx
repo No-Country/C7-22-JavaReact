@@ -19,11 +19,14 @@ export default function RetiroDinero
 
     const token = auth
     const retirarDinero=()=>{
-      const usdBalance = usd
+      const data = {
+        usdBalance:usd,
+        
+       }
     
        
 
-       axios.patch(WITHDRAW_URL, usdBalance,{
+       axios.patch(WITHDRAW_URL, data,{
         headers: {
             Authorization: `Bearer ${token}`
         }

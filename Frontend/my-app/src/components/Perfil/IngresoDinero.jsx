@@ -17,12 +17,15 @@ export default function IngresoDinero
 
     const token = auth
     const ingresarDinero=()=>{
-      const usdBalance = usd
+      const data = {
+        usdBalance:usd,
+        
+       }
     
     
        
 
-       axios.patch(DEPOSIT_URL, usdBalance, {
+       axios.patch(DEPOSIT_URL, data, {
         headers: {
             Authorization: `Bearer ${token}`
         }

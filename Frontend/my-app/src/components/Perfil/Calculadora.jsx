@@ -15,16 +15,18 @@ export default function Calculadora() {
     const filteredCoin = coins.filter((coin) => coin.name.toLowerCase().includes(id))
 
 
-    const PURCHASE_URL= 'wallets/me/add'
+    const PURCHASE_URL= `wallets/exchange/${id}`
 
     const token = auth
     const comprarCripto=()=>{
-      const usdBalance = usd
+        const data = {
+            usdBalance:usd,
+           }
     
     
        
 
-       axios.get(PURCHASE_URL, usdBalance,  {
+       axios.patch(PURCHASE_URL, data,  {
         headers: {
             Authorization: `Bearer ${token}`
         }
@@ -39,6 +41,8 @@ export default function Calculadora() {
        })
    
     }
+
+    const unidades = usd/filteredCoin.current_price
 
     return (
         <div>
@@ -61,7 +65,7 @@ export default function Calculadora() {
                             </div>
 
                             <div class="btn-group" role="group">
-                                <input className="me-3 mb-3" type="number" name="text" placeholder="0.00" value = {usd/filteredCoin.current_price}/>
+                                <input className="me-3 mb-3" type="number" name="text" placeholder="0.00" value = {unidades}/>
                                 <button id="btnGroupDrop1" type="button" class="btn btn-dark rounded-3" data-bs-toggle="dropdown" data-bs-dismiss="modal" >
                                     CRIPTO
                                 </button>
