@@ -1,6 +1,45 @@
 import React from 'react'
 import './Perfil.css'
+import { useParams } from 'react-router-dom'
+import { useState, useContext } from 'react'
+import { CoinsContext } from '../../context/CoinsContext'
+import { useAuth } from '../../hooks/useAuth'
+import axios from '../../api/axios'
 export default function Calculadora() {
+    
+    const {id} =useParams()
+    const [usd, setUsd] = useState("");
+    const {coins} = useContext(CoinsContext)
+    const {auth} = useAuth();
+
+    const filteredCoin = coins.filter((coin) => coin.name.toLowerCase().includes(id))
+
+
+    const PURCHASE_URL= 'wallets/me/add'
+
+    const token = auth
+    const comprarCripto=()=>{
+      const usdBalance = usd
+    
+    
+       
+
+       axios.get(PURCHASE_URL, usdBalance,  {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+       .then(res => {
+           console.log(res)
+   
+       })
+   
+       .catch(()=>{
+           console.log("No Server Response")
+       })
+   
+    }
+
     return (
         <div>
             <div className='register'>
@@ -11,12 +50,18 @@ export default function Calculadora() {
                     <div className="card-body">
                         <div className="card-footer text-muted">
                             <div>
-                                <input className="me-4 mb-3" type="number" name="text" placeholder="0.00" />
+                                <input className="me-4 mb-3"
+                                    type="number"
+                                    name="text"
+                                    placeholder="0.00"
+                                    onChange={(e)=> setUsd(e.target.value)}
+              
+                                />
                                 <button type="button" className="btn btn-dark me-3">USD</button>
                             </div>
 
                             <div class="btn-group" role="group">
-                                <input className="me-3 mb-3" type="number" name="text" placeholder="0.00" />
+                                <input className="me-3 mb-3" type="number" name="text" placeholder="0.00" value = {usd/filteredCoin.current_price}/>
                                 <button id="btnGroupDrop1" type="button" class="btn btn-dark rounded-3" data-bs-toggle="dropdown" data-bs-dismiss="modal" >
                                     CRIPTO
                                 </button>
@@ -27,7 +72,7 @@ export default function Calculadora() {
                             </div>
 
                             <div>
-                                <button type="button" className="btn btn-success m-3" data-bs-dismiss="modal">comprar</button>
+                                <button type="button" className="btn btn-success m-3" data-bs-dismiss="modal" onClick={comprarCripto}>Comprar</button>
 
                             </div>
 

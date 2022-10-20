@@ -4,6 +4,13 @@
     right:80px;
 }
 
+.portfolioContainerDos{
+    padding-top:90px;
+    position: relative;
+    right:180px;
+}
+
+
 .titlesPortfolio {
     display: flex;
 
@@ -32,4 +39,9 @@
     height:40px;
     text-align: center;
 
+}
+
+.botonComprar {
+    position:relative;
+    left:290px;
 }
