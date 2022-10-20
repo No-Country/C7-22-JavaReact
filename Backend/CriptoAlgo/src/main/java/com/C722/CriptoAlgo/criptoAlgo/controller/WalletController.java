@@ -69,7 +69,7 @@ public class WalletController {
     @PatchMapping("/me/withdraw")
     public ResponseEntity<WalletResponse> withdrawUsdBalance(@RequestHeader(name = "Authorization") String token,
                                                         @RequestBody @Valid WalletUpdateRequest request) {
-        WalletResponse update = walletService.addUsdBalance(request, token);
+        WalletResponse update = walletService.withdrawUsdBalance(request, token);
         return ResponseEntity.ok().body(update);
 
     }

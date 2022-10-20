@@ -25,4 +25,6 @@ public interface WalletService {
    WalletResponse getWalletBalance(String token);
 
    WalletResponse exchangeUsdCrypto(WalletUpdateRequest request, String token, String crypto);
+
+   WalletResponse withdrawUsdBalance(WalletUpdateRequest request, String token);
 }

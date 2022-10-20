@@ -73,15 +73,21 @@ public class WalletServiceImpl implements WalletService {
         Optional <WalletEntity> entityDb = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get());;
         WalletEntity update = new WalletEntity();
         walletMapper.updateRequestToEntity(request, update);
-        entityDb.get().setUsdBalance(entityDb.get().getUsdBalance()+ update.getUsdBalance());
+        entityDb.get().setUsdBalance(entityDb.get().getUsdBalance() + Math.abs(update.getUsdBalance()));
         walletRepository.save(entityDb.get());
         return walletMapper.entityToResponse(entityDb.get());
     }
 
-   /* @Override
-    public WalletResponse transfer(WalletUpdateRequest request, String token) {
-        return null;
-    }*/
+    @Override
+    public WalletResponse withdrawUsdBalance(WalletUpdateRequest request, String token) {
+        String userToken = jwtUtils.rebuildToken(token);
+        Optional <WalletEntity> entityDb = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get());;
+        WalletEntity update = new WalletEntity();
+        walletMapper.updateRequestToEntity(request, update);
+        entityDb.get().setUsdBalance(entityDb.get().getUsdBalance() - Math.abs(update.getUsdBalance()));
+        walletRepository.save(entityDb.get());
+        return walletMapper.entityToResponse(entityDb.get());
+    }
 
     @Override
     public WalletResponse getWalletBalance(String token) {
@@ -180,7 +186,6 @@ public class WalletServiceImpl implements WalletService {
         walletRepository.save(entityDb);
         return walletMapper.entityToResponse(entityDb);
     }
-
 
 
 }
