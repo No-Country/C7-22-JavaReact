@@ -16,6 +16,7 @@ import RegistroExitoso from './components/Perfil/RegistroExitoso';
 import Calculadora from './components/Perfil/Calculadora.jsx';
 import { CoinsProvider } from './context/CoinsContext';
 import IngresoDinero from './components/Perfil/IngresoDinero';
+import RetiroDinero from './components/Perfil/RetiroDinero';
 export const  App =() => {
   return (
     <>
@@ -36,6 +37,9 @@ export const  App =() => {
               <Route path='/register'element={<CreaTuCuenta/>}></Route>
               <Route path='/plataforma'element={<PlataformaCripto/>}></Route>
               <Route path='/plataforma/ingresodinero'element={<IngresoDinero/>}></Route>
+              <Route path='/plataforma/retirodinero'element={<RetiroDinero/>}></Route>
+              <Route path='/plataforma/calculadora/:id'element={<Calculadora/>}></Route>
+            
           </Routes>
         <Footer/>
       </BrowserRouter>
