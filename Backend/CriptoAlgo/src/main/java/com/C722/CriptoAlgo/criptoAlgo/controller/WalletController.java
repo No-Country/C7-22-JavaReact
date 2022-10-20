@@ -58,5 +58,20 @@ public class WalletController {
         WalletResponse update = walletService.exchangeUsdCrypto(request, token, crypto);
         return ResponseEntity.ok().body(update);
     }
+    @PatchMapping("/me/add")
+    public ResponseEntity<WalletResponse> addUsdBalance(@RequestHeader(name = "Authorization") String token,
+                                                 @RequestBody @Valid WalletUpdateRequest request) {
+        WalletResponse update = walletService.addUsdBalance(request, token);
+        return ResponseEntity.ok().body(update);
+
+    }
+
+    @PatchMapping("/me/withdraw")
+    public ResponseEntity<WalletResponse> withdrawUsdBalance(@RequestHeader(name = "Authorization") String token,
+                                                        @RequestBody @Valid WalletUpdateRequest request) {
+        WalletResponse update = walletService.addUsdBalance(request, token);
+        return ResponseEntity.ok().body(update);
+
+    }
 
 }

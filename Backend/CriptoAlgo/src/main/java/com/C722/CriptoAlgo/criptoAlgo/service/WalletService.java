@@ -20,7 +20,7 @@ public interface WalletService {
 
    void deleteById(Long id);
 
-   WalletResponse transfer(WalletUpdateRequest request, String token);
+   WalletResponse addUsdBalance(WalletUpdateRequest request, String token);
 
    WalletResponse getWalletBalance(String token);
 

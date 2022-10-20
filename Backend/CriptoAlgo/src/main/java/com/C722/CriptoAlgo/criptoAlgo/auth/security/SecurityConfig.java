@@ -57,7 +57,7 @@ public class SecurityConfig {
                         .antMatchers(HttpMethod.PUT, "/wallets/exchange/**").hasAuthority(RoleEnum.USER.getSimpleRoleName())
                         .antMatchers(HttpMethod.GET, "/wallets/getAll").hasAuthority(RoleEnum.ADMIN.getSimpleRoleName())
                         .antMatchers(HttpMethod.GET, "/wallets/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
-                        .antMatchers(HttpMethod.PATCH, "/wallets/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())
+                        .antMatchers(HttpMethod.PATCH, "/wallets/me/**").hasAuthority(RoleEnum.USER.getSimpleRoleName())
 
                         // Users
                         .antMatchers(HttpMethod.PATCH, "/users/me").hasAuthority(RoleEnum.USER.getSimpleRoleName())

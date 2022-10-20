@@ -68,9 +68,20 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
+    public WalletResponse addUsdBalance(WalletUpdateRequest request, String token) {
+        String userToken = jwtUtils.rebuildToken(token);
+        Optional <WalletEntity> entityDb = walletRepository.findWalletByOwner(userRepository.findByEmail(jwtUtils.extractUsername(userToken)).get());;
+        WalletEntity update = new WalletEntity();
+        walletMapper.updateRequestToEntity(request, update);
+        entityDb.get().setUsdBalance(entityDb.get().getUsdBalance()+ update.getUsdBalance());
+        walletRepository.save(entityDb.get());
+        return walletMapper.entityToResponse(entityDb.get());
+    }
+
+   /* @Override
     public WalletResponse transfer(WalletUpdateRequest request, String token) {
         return null;
-    }
+    }*/
 
     @Override
     public WalletResponse getWalletBalance(String token) {
