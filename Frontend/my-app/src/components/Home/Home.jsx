@@ -2,7 +2,11 @@ import './Home.css'
 import { MainCriptos } from '../MainCriptos/MainCriptos';
 import { RegisterHome } from './RegisterHome/RegisterHome';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 export const Home = () => {
+
+    const {auth} = useAuth()
+
     return (
         <div>
             <div className="pb-5">
@@ -12,9 +16,11 @@ export const Home = () => {
                         <p>
                             Tu sueldo ahora genera <br/>ganancias extras.<br/> Comprá fácil con tu<br/> celular.
                         </p>
-                        <Link to="/register">
+                        
+                        {!auth.length?<Link to="/register">
                             <button className="btn btn-light rounded-5">Crea tu cuenta</button>
-                        </Link>
+                        </Link>:<div></div>}
+                        
                         
                     </div>
                 </div>

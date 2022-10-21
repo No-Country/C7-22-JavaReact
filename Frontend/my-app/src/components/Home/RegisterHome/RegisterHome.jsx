@@ -1,7 +1,11 @@
 import './RegisterHome.css'
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../hooks/useAuth';
 
 export const RegisterHome = () => {
+
+    const {auth} = useAuth();
+
     return (
         <div className="container-fluid">
             <div className="row registerContainer">
@@ -15,7 +19,8 @@ export const RegisterHome = () => {
                             Crea tu cuenta
                             </h2>
                             <p>
-                            <Link to="/register">Regístrate</Link> desde el sitio web.
+                                
+                            {!auth.length?<Link to="/register">Regístrate</Link>:<>Registrate</>} desde el sitio web.
                             </p>
                             
                         </div>

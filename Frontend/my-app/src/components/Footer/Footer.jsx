@@ -6,7 +6,10 @@ export const Footer = () => {
     <div className="container-fluid">
         <div className="row contentFooter">
           <div className="col-md-3 logoFooter ">
-            <img src="../assets/logo.svg" alt="Logo CriptoAlgo" />
+            <Link to="/">
+              <img src="../assets/logo.svg" alt="Logo CriptoAlgo" />
+            </Link>
+            
           </div>
           <div className="col-md-6 listFooter">
             <ul className="list ">
@@ -19,15 +22,28 @@ export const Footer = () => {
           </div>
           <div className="col-md-3 socialFooter">
             <div className="pb-4">
+              <a href="https://twitter.com/home" target="_blank" rel="noreferrer">
                 <img className="twitter" src="../assets/twitter-icono.svg" alt="twitter icono" />
+              </a>
+              <a href="https://facebook.com/" target="_blank" rel="noreferrer">
                 <img className="facebook" src="../assets/facebook-icono.svg" alt="facebook icono" />
+              </a>
+                
             </div>
             <div className="pb-4">
+              <a href="https://youtube.com/" target="_blank" rel="noreferrer">
                 <img className="youtube" src="../assets/youtube-icono.svg" alt="youtube icono" />
+              </a>
+              <a href="https://telegram.org/" target="_blank" rel="noreferrer">
                 <img className="telegram"src="../assets/telegram-icono.svg" alt="telegram icono" />
+              </a>
+                
             </div>
             <div>
+              <a href="https://instagram.com/" target="_blank" rel="noreferrer">
                 <img className="instagram" src="../assets/instagram-icono.svg" alt="instagram icono" />
+              </a>
+                
             </div>
           </div>
         </div>

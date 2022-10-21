@@ -10,24 +10,29 @@ import { useAuth } from '../../../hooks/useAuth';
 
 
 export const PlataformaCripto = () => {
-    const {auth} = useAuth();
+    const {auth, setAuth} = useAuth();
     const [user, setUser] = useState("");
     const [wallet, setWallet] = useState("");
     const navigate = useNavigate()
 
-    const token = auth
-
-    useEffect(() => {
-        
-
        if (!localStorage.getItem("token")) {
         navigate("/iniciarsesion")
        }
+<<<<<<< HEAD
     }, [navigate]);
 
 
-    useEffect(() => {
+=======
+  
 
+    setAuth(localStorage.getItem("token"))
+   
+    
+    let token = auth
+   
+>>>>>>> 9afa7c0c52bcd2534bb097e9d2fb152012c28455
+    useEffect(() => {
+      
         const GETDATA_URL= 'users/me'
 
         axios.get(GETDATA_URL, {
@@ -44,11 +49,17 @@ export const PlataformaCripto = () => {
         .catch(()=>{
             console.log("No Server Response")
         })
+       
+        
     
     }, [token]);
 
+<<<<<<< HEAD
         
 
+=======
+   
+>>>>>>> 9afa7c0c52bcd2534bb097e9d2fb152012c28455
     useEffect(() => {
 
         const GETWALLET_URL= 'wallets/me'
@@ -85,4 +96,9 @@ export const PlataformaCripto = () => {
            
         </div>
     );
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> 9afa7c0c52bcd2534bb097e9d2fb152012c28455
