@@ -18,11 +18,6 @@ export const PlataformaCripto = () => {
        if (!localStorage.getItem("token")) {
         navigate("/iniciarsesion")
        }
-<<<<<<< HEAD
-    }, [navigate]);
-
-
-=======
   
 
     setAuth(localStorage.getItem("token"))
@@ -30,7 +25,6 @@ export const PlataformaCripto = () => {
     
     let token = auth
    
->>>>>>> 9afa7c0c52bcd2534bb097e9d2fb152012c28455
     useEffect(() => {
       
         const GETDATA_URL= 'users/me'
@@ -54,12 +48,7 @@ export const PlataformaCripto = () => {
     
     }, [token]);
 
-<<<<<<< HEAD
-        
-
-=======
    
->>>>>>> 9afa7c0c52bcd2534bb097e9d2fb152012c28455
     useEffect(() => {
 
         const GETWALLET_URL= 'wallets/me'
@@ -101,4 +90,3 @@ export const PlataformaCripto = () => {
 =======
 }
 
->>>>>>> 9afa7c0c52bcd2534bb097e9d2fb152012c28455
