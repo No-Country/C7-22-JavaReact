@@ -69,7 +69,6 @@ export const PlataformaCripto = () => {
         })
     }, [token]);
 
-    
 
 
     return (
@@ -85,8 +84,5 @@ export const PlataformaCripto = () => {
            
         </div>
     );
-<<<<<<< HEAD
-}
-=======
-}
 
+}
