@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import Select from 'react-select'
 import { useState } from 'react';
 import axios from '../../api/axios';
+import RegistroExitoso from '../Perfil/RegistroExitoso';
 
 export const CreaTuCuenta = () => {
-    const [country, setCountry] = useState("");
+    
     const [firstname, setFirstname] = useState("");
-    const [lastname, setLastname] = useState("initialState");
+    const [lastname, setLastname] = useState("");
     const [newUsername, setNewUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -20,19 +21,13 @@ export const CreaTuCuenta = () => {
 
     const REGISTER_URL= 'auth/register'
 
-    const loginService = () => {
-      console.log(country)
-      console.log(newUsername)
-      console.log(newPassword)
-      console.log(confirmPassword)
-    }
-
+  
     const firstnameValidation = () => {
       const regEx = /^[a-zA-Z]{3,15}$/i;
       if(regEx.test(firstname)){
         setFirstnameError(false)
       }else if
-        (!regEx.test(firstname) && firstname  === "") {
+        (!regEx.test(firstname) || firstname  === "") {
           setFirstnameError(true)
         }
     }
@@ -42,7 +37,7 @@ export const CreaTuCuenta = () => {
       if(regEx.test(lastname)){
         setLastnameError(false)
       }else if
-        (!regEx.test(lastname) && lastname  === "") {
+        (!regEx.test(lastname) || lastname  === "") {
           setLastnameError(true)
         }
     }
@@ -52,7 +47,7 @@ export const CreaTuCuenta = () => {
       if(regEx.test(newUsername)){
         setUsernameError(false)
       }else if
-        (!regEx.test(newUsername) && newUsername  === "") {
+        (!regEx.test(newUsername) || newUsername  === "") {
           setUsernameError(true)
         }
     }
@@ -62,7 +57,7 @@ export const CreaTuCuenta = () => {
        if(regEx.test(newPassword)){
         SetPasswordError(false)
       }else if
-        (!regEx.test(newPassword) && newPassword  === "") {
+        (!regEx.test(newPassword) || newPassword  === "") {
           SetPasswordError(true)
         }
     }
@@ -77,9 +72,6 @@ export const CreaTuCuenta = () => {
     }
 
    
-    
-    loginService();
-
     const options = [
         {value: "Perú", label: "Perú"},
         {value: "Argentina", label: "Argentina"},
@@ -120,7 +112,7 @@ export const CreaTuCuenta = () => {
       
     }
 
-    return ( <>{success?(<div>Registro exitoso!</div>):(
+    return ( <>{success?<RegistroExitoso/>:(
 <div className="registerContainer">
         <form  onSubmit={handleJoin} className="formRegisterContainer">
           <h2>Crea una cuenta personal</h2>
@@ -129,7 +121,7 @@ export const CreaTuCuenta = () => {
             <p className="titleInput">País de residencia</p>
             <Select 
                     options={options}
-                    onChange={(options)=> setCountry(options.value)}
+                    
             />
            
           </div>
@@ -224,75 +216,4 @@ export const CreaTuCuenta = () => {
 
     )}</>)
   }
-        /*
-        <div className="registerContainer">
-        <form  onSubmit={handleJoin} className="formRegisterContainer">
-          <h2>Crea una cuenta personal</h2>
-          <p className="subtitle">Estas a unos pasos de entrar al mundo cripto.</p>
-          <div className="pt-4">
-            <p className="titleInput">País de residencia</p>
-            <Select 
-                    options={options}
-                    onChange={(options)=> setCountry(options.value)}
-            />
-           
-          </div>
-          <div className="pt-2">
-           <p className="titleInput">Correo electrónico</p>
-           <input type="text" 
-                name="Username" 
-                placeholder="Correo electrónico"
-                value={newUsername}
-                onChange={(e)=> setNewUsername(e.target.value)}
-                className={usernameError?"inputRegisterError":"inputRegister"} />
-                
-                
-            <p className="instructions">Registrate con el correo que más utilizas</p>
-            {usernameError&&<div className="messageError"><label>
-                Usa el formato nombre@ejemplo.com
-            </label></div>}
-          </div>
-
-          <div className="pt-2">
-           <p className="titleInput">Contraseña</p>
-           <input type="password"
-                name="Password" 
-                placeholder="Contraseña"
-                value={newPassword}
-                onChange={(e)=> setNewPassword(e.target.value)}
-                className={passwordError?"inputRegisterError":"inputRegister"}/> 
-            <p className="instructions">Mín. 8 caracteres con números y letras</p>   
-            {passwordError&&<div className="messageError"><label>
-                Digita una contraseña de 8 caracteres con al menos un <br/>numero y una letra
-            </label></div>}
-          </div>
-
-          <div className="pt-2">
-           <p className="titleInput">Confirma tu contraseña</p>
-           <input type="password"
-                name="confirmPassword" 
-                value={confirmPassword}
-                onChange={(e)=> setConfirmPassword(e.target.value)}
-                placeholder="Comfirma tu contraseña"
-                className={confirmPasswordError||passwordError?"inputRegisterError":"inputRegister"}/>   
-                {confirmPasswordError&&<div className="messageErrorTwo"><label>
-                Las contraseñas deben coincidir
-            </label></div>} 
-          </div>
-            
-          <div className="linksRegister">
-          
-          <button
-               
-                className="btn btn-success">
-          Comenzar
-          </button>
-          </div>
-          
-          <Link to="/iniciarsesion" className="loginLink"><p >Ya tengo una cuenta</p></Link> 
-        </form>
-      </div>
-    );
-}*/
-
-
+      

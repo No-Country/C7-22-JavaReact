@@ -1,17 +1,20 @@
 .mainTitle{
     display: flex;
     flex-direction: column;
-    margin-left: 40%;
+    align-items: center;
+    text-align: start;
     
 }
 
 .registerContainerPerfil{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    
     height: auto;
     justify-content: center;
-    margin-left: 30%;
+    align-items: center;
+    padding-bottom:20px;
+   
     
    
 }
@@ -20,7 +23,7 @@
 }
 .formRegisterContainer{
    
-    padding:50px 30px 50px 30px;
+    padding:30px 30px 30px 30px;
 }
 
 .linksRegister{
@@ -81,27 +84,38 @@
 }
 
 .messageError{
-    display: flex;
     color:#F04449;
     font-size: 14px;
     font-weight: 700;
     padding-left:10px;
-    position:relative;
-    bottom:10px;
-}
-.messageErrorTwo{
-    display: flex;
-    color:#F04449;
-    font-size: 14px;
-    font-weight: 700;
-    padding-left:10px;
+    padding-bottom:20px;
    
 }
+.messageErrorTwo{
+    color:#F04449;
+    font-size: 14px;
+    font-weight: 700;
+    padding-left:10px;
+    width:100%;
+    
+}
+
 
 .register{
     display: flex;
     justify-content: center;
     margin: 10%;
+}
+
+.inputPerfilDisabled{
+    width:250px;
+    position: relative;
+    left:20px;
+    text-align: center;
+}
+
+.contraseñasContainer {
+    padding-right:250px;
 }
 
 

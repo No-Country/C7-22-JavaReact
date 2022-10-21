@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import './Perfil.css'
 
-/*Este es para ingresar en el return del components/CreaTuCuenta/CreaTuCuenta.jsx   div REGISTRO EXITOSO*/
 export default function RegistroExitoso() {
   return (
 

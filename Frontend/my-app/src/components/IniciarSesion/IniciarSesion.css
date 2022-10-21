@@ -26,12 +26,10 @@
     
 }
 
-.linksLogin input {
-    margin-top: 30px;
-    border-radius: 32px;
-    height:45px;
-    text-transform: none;
-    font-size: 20px;
+.linksLogin button {
+    margin-top: 15px;
+    
+    
     
 }
 

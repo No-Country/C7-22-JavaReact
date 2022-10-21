@@ -33,7 +33,7 @@ export const MiPortafolio = ({wallet}) => {
                             <p>{coin.name}</p>
                         </div>
                         <div>{coin.current_price}</div>
-                        <Link to={`/plataforma/calculadora/${coin.name}`}>
+                        <Link to={`/plataforma/calculadora/${coin.id}`}>
                             <button className="btn btn-dark botonComprar">Comprar</button>
                         </Link>
                         
@@ -63,26 +63,26 @@ export const MiPortafolio = ({wallet}) => {
                 </div>
 
                     <div className="criptosPortfolio">
-                        <div>2</div>
-                        {/*<div>{(criptos[0])*coins[0].current_price}</div>*/}
+                       
+                        <div>{((criptos[0])*coins[0].current_price).toFixed(2)}</div>
                     </div>
                     <div className="criptosPortfolio">
-                    <div>2</div> {/*<div>{(criptos[1])*coins[1].current_price}</div>*/}
+                        <div>{((criptos[1])*coins[1].current_price).toFixed(2)}</div>
                     </div>
                     <div className="criptosPortfolio">
-                    <div>2</div>{/*<div>{(criptos[2])*coins[2].current_price}</div>*/}
+                        <div>{((criptos[2])*coins[2].current_price).toFixed(2)}</div>
                     </div>
                     <div className="criptosPortfolio">
-                    <div>2</div>{/*<div>{(criptos[3])*coins[3].current_price}</div>*/}
+                        <div>{((criptos[3])*coins[3].current_price).toFixed(2)}</div>
                     </div>
                     <div className="criptosPortfolio">
-                    <div>2</div> {/*<div>{(criptos[4])*coins[4].current_price}</div>*/}
+                        <div>{((criptos[4])*coins[4].current_price).toFixed(2)}</div>
                     </div>
                     <div className="criptosPortfolio">
-                    <div>2</div>{/*<div>{(criptos[5])*coins[5].current_price}</div>*/}
+                        <div>{((criptos[5])*coins[5].current_price).toFixed(2)}</div>
                     </div>
                     <div className="criptosPortfolio">
-                    <div>2</div> {/*<div>{(criptos[6])*coins[6].current_price}</div>*/}
+                        <div>{((criptos[6])*coins[6].current_price).toFixed(2)}</div>
                     </div>
                         
                     

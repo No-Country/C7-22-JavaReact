@@ -31,7 +31,7 @@ export const  App =() => {
               <Route path='/vacantes' element={<Vacantes/>}></Route>
               <Route path='/ayuda'element={<Ayuda/>}></Route>
               <Route path='/precios'element={<Precios/>}></Route>
-              <Route path='/perfil' element={<Perfil/>}></Route>
+             
               <Route path='/calculadora' element={<Calculadora/>}></Route>
               <Route path='/registroexitoso' element={<RegistroExitoso/>}></Route>
               <Route path='/iniciarsesion'element={<IniciarSesion/>}></Route>
@@ -40,6 +40,7 @@ export const  App =() => {
               <Route path='/plataforma/ingresodinero'element={<IngresoDinero/>}></Route>
               <Route path='/plataforma/retirodinero'element={<RetiroDinero/>}></Route>
               <Route path='/plataforma/calculadora/:id'element={<Calculadora/>}></Route>
+              <Route path='/plataforma/perfil' element={<Perfil/>}></Route>
             
           </Routes>
         <Footer/>

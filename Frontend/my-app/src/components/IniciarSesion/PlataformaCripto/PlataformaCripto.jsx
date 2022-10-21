@@ -10,29 +10,24 @@ import { useAuth } from '../../../hooks/useAuth';
 
 
 export const PlataformaCripto = () => {
-    const {auth} = useAuth();
+    const {auth, setAuth} = useAuth();
     const [user, setUser] = useState("");
     const [wallet, setWallet] = useState("");
 
     const navigate = useNavigate()
 
-    const token = auth
-
-    useEffect(() => {
-        
-
        if (!localStorage.getItem("token")) {
         navigate("/iniciarsesion")
        }
-    }, [navigate]);
+  
 
-
+    setAuth(localStorage.getItem("token"))
+   
     
-
-    
-
+    let token = auth
+   
     useEffect(() => {
-
+      
         const GETDATA_URL= 'users/me'
 
         axios.get(GETDATA_URL, {
@@ -49,12 +44,12 @@ export const PlataformaCripto = () => {
         .catch(()=>{
             console.log("No Server Response")
         })
+       
+        
     
     }, [token]);
 
    
-    
-
     useEffect(() => {
 
         const GETWALLET_URL= 'wallets/me'
@@ -93,31 +88,3 @@ export const PlataformaCripto = () => {
     );
 }
 
-/*"usdBalance": 0.0,
-        "argpesosBalance": 0.0,
-        "usdtBalance": 0.0,
-        "usdcBalance": 0.0,
-        "busdBalance": 0.0,
-        "btcBalance": 0.0,
-        "ethBalance": 0.0,
-        "bnbalance": 0.0,
-        "adaBalance": 0.0 
-        bitcoin,ethereum,binancecoin,cardano,theter,usdcoin,binanceusd*/
-
-/*{
-    "ownerId": 1,
-    "usdBalance": 0.0,
-    "usdtBalance": 0.0,
-    "usdcBalance": 0.0,
-    "busdBalance": 0.0,
-    "btcBalance": 0.0,
-    "ethBalance": 0.0,
-    "bnbBalance": 0.0,
-    "adaBalance": 0.0
-} */
-
-/*{
-    "firstName": "Karem",
-    "lastName": "Chaparro",
-    "email": "k@gmail.com"
-} */

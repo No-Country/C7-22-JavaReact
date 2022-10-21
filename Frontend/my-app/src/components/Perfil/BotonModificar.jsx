@@ -5,6 +5,7 @@ export default function BotonModificar() {
         <div className="linksRegister">
 
             <input
+                type="submit"
                 value="Modificar"
                 className="btn btn-success"
             />

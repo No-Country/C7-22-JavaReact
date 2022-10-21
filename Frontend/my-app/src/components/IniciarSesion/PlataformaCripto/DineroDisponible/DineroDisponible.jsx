@@ -10,17 +10,17 @@ export const DineroDisponible = ({wallet}) => {
                     <Link to="/plataforma/ingresodinero">
                         <button className="btn btn-dark me-2 fundingButton">Ingresar dinero</button>
                     </Link>
-                   
-                    <button className="btn btn-dark fundingButton">Retirar dinero</button>
+                    <Link to="/plataforma/retirodinero">
+                        <button className="btn btn-dark fundingButton">Retirar dinero</button>
+                    </Link>
+                    
                 </div>
             </div>
             
-            <div className="botonActionContainer">
-                <button className="btn btn-success actionButton">Mis criptomonedas</button>
-                <button className="btn btn-success actionButton">Comprar criptomonedas</button>
-
-            </div>
+            
         </div>
     );
 }
+
+
 

@@ -14,7 +14,7 @@ export const CoinsRows = ({coin,index}) => {
             <td className={coin.price_change_percentage_24h>0?"text-success":"text-danger"}>{coin.price_change_percentage_24h} %</td>
             <td>$ {coin.total_volume}</td>
             <td> 
-                <Link to="/plataforma">
+                <Link to={`/plataforma/calculadora/${coin.id}`}>
                     <button className="btn btn-dark">Comprar</button>
                 </Link>
             </td>
