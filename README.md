@@ -16,7 +16,7 @@ _A continuación parte de las herramientas y tecnologías utilizadas._
 </br>
 [![Java](https://img.shields.io/badge/Java-1572B6?style=for-the-badge&logo=java&logoColor=white&labelColor=101010)](#)
 
-![Maquetado](https://github.com/iwill88/Libreria-Melquiades/blob/master/public/assets/Portada-GitHub.png)
+![Maquetado](https://github.com/No-Country/C7-22-JavaReact/blob/rama_development/Frontend/my-app/public/assets/Portada-github.png)
 
 ---
 📌 [Sitio Web de "CriptoAlgo - Billetera de criptomonedas web"](https://iwill88.github.io/CriptoAlgo/) 😊
