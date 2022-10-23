@@ -1,4 +1,4 @@
-# CriptoAlgo - Billtera de criptomonedas wen
+# CriptoAlgo - Billtera de criptomonedas web
 
 _Sitio Web de la billetera de criptomonedas web "CriptoAlgo", creado con HTML, CSS, Bootstrap, Javascript, React, context y hooks en el frontend y con JAVA en el backend. Sitio web para desktop y mobile y responsive. En CriptoAlgo, se puede recibir y transferir una cantidad de monedas a través de un código identificador, muestra el saldo de una moneda y de todas las monedas. Ésta billetera está desarrollada con una interfaz de texto que admite monedas registradas en la API Coingecko._
 
